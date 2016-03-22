@@ -1,0 +1,1 @@
+{"version":3,"sources":["modules/user/user.init.ts"],"names":[],"mappings":"AAAA,OAAO,CAAC,MAAM,CAAC,kBAAkB,EAAE,EAAE,CAAC,CAAC;OAChC,oBAAoB","file":"modules/user/user.init.js","sourcesContent":["angular.module('app.modules.user', []);\r\nimport './config/bootstrap';\r\n"],"sourceRoot":"/source/"}

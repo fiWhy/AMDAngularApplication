@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <script src="../node_modules/typescript/lib/typescript.js"></script>
+    <script src="../node_modules/es6-module-loader/dist/es6-module-loader-dev.js"></script>
+    <script>
+        System.transpiler = 'typescript';
+               System.import('app');
+    </script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+
+<body data-ng-controller="AppController as vm">
+    <div data-ng-include="'./view/layout/header.html'"></div>
+    <ui-view></ui-view>
+    <div data-ng-include="'./view/layout/footer.html'"></div>
+
+    <!-- inject:js -->
+    <!-- endinject -->
+
+</body>
+
+</html>
