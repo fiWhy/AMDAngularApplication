@@ -3,7 +3,7 @@ import 'angular';
 import {authorizeConfig} from './config/authorize.config';
 import {AuthorizeResource} from './resources/authorize.resource';
 
-import 'mocks/services/authorize/authorize.mock';
+// import 'mocks/services/authorize/authorize.mock';
 
 interface IAuthorizeService {
     

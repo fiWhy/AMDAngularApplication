@@ -1,5 +1,6 @@
-define(["require", "exports", 'angular', 'uiRouter', 'ngAnimate', 'ngResource', 'ngLoadingBar', './core/core.init', './modules/modules.init', './scripts/scripts', 'ngMocks'], function (require, exports) {
+define(["require", "exports", 'angular', 'uiRouter', 'ngAnimate', 'ngResource', 'ngLoadingBar', './core/core.init', './modules/modules.init', './scripts/scripts'], function (require, exports) {
     "use strict";
+    // import 'ngMocks';
     var app = angular.module('app', [
         'ngAnimate',
         'ngResource',

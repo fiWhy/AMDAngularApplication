@@ -40,28 +40,9 @@ require.config({
         'ngLoadingBar':{
             deps: ['angular']
         },
-        
-        /**
-         * Application
-         */
         'ngMocks': {
             deps: ['angular']
         },
-        'appMocks': {
-            deps: ['ngMocks']
-        },
-        // 'appConstants': {
-        //     deps: [
-        //         'app',
-        //         'appCore'
-        //     ]
-        // },
-        'mocks': {
-            deps: [
-                'appMocks',
-                'appConstants'
-                ]
-        }
     },
 });
 

@@ -38,27 +38,9 @@ require.config({
         'ngLoadingBar': {
             deps: ['angular']
         },
-        /**
-         * Application
-         */
         'ngMocks': {
             deps: ['angular']
         },
-        'appMocks': {
-            deps: ['ngMocks']
-        },
-        // 'appConstants': {
-        //     deps: [
-        //         'app',
-        //         'appCore'
-        //     ]
-        // },
-        'mocks': {
-            deps: [
-                'appMocks',
-                'appConstants'
-            ]
-        }
     },
 });
 define(['require', 'angular', 'uiRouter', 'ngResource', 'ngAnimate', 'ngLoadingBar', 'ngMocks', 'app'], function (require, angular, uiRouter, ngResource, ngAnimate, ngLoadingBar, app) {

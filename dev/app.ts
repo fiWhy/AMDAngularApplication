@@ -9,7 +9,7 @@ import './core/core.init';
 import './modules/modules.init';
 import './scripts/scripts';
 
-import 'ngMocks';
+// import 'ngMocks';
 
 var app = angular.module('app', [
     'ngAnimate',

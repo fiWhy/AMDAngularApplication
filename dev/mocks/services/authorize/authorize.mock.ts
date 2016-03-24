@@ -1,8 +1,9 @@
-import 'appMocks';
-
+// import 'appMocks';
+import 'ngMocks';
 import {IAuthorizeEntity, AuthorizeEntity} from 'core/services/authorize/entity/authorize.entity';
-
-angular.module('app.mocks')
+angular.module('app.mocks.authorize', [
+    'ngMocks'
+])
     .run(AuthorizeMockRun);
     
     AuthorizeMockRun.$inject = ['$httpBackend', 'config'];
@@ -16,7 +17,7 @@ angular.module('app.mocks')
         
         $httpBackend.whenGET(config.mainPaths.authorize)
             .respond((method, url, data) => {
-                return response;
+                return [200, response, {}];
             })
         
     }
