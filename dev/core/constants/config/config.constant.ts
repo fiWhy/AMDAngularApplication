@@ -1,5 +1,5 @@
 export function ConfigConstant() {
-    var apiUrl = '/api';
+    var apiUrl = '/api/';
     return {
         apiUrl: apiUrl,
         documentRoot: 'app',

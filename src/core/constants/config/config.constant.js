@@ -1,7 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     function ConfigConstant() {
-        var apiUrl = '/api';
+        var apiUrl = '/api/';
         return {
             apiUrl: apiUrl,
             documentRoot: 'app',

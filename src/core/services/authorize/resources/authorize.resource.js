@@ -1,4 +1,4 @@
-define(["require", "exports", '../entity/authorize.entity'], function (require, exports) {
+define(["require", "exports"], function (require, exports) {
     "use strict";
     var AuthorizeResource = (function () {
         function AuthorizeResource($resource, config) {

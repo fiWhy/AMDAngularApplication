@@ -1,11 +1,11 @@
-define(["require", "exports", './config/authorize.config', './resources/authorize.resource', 'angular'], function (require, exports, authorize_config_1, authorize_resource_1) {
+define(["require", "exports", './config/authorize.config', './resources/authorize.resource', 'angular', 'mocks/services/authorize/authorize.mock'], function (require, exports, authorize_config_1, authorize_resource_1) {
     "use strict";
     var AuthorizeService = (function () {
-        function AuthorizeService(AuthorizeService) {
-            this.AuthorizeService = AuthorizeService;
+        function AuthorizeService(AuthorizeResource) {
+            this.AuthorizeResource = AuthorizeResource;
         }
         AuthorizeService.prototype.test = function () {
-            console.log('test');
+            console.log(this.AuthorizeResource.isLoggedIn());
         };
         AuthorizeService.$inject = ['AuthorizeResource'];
         return AuthorizeService;

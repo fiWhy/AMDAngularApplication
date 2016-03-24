@@ -6,10 +6,25 @@ require.config({
         "ngResource": "../node_modules/angular-resource/angular-resource",
         "ngLoadingBar": "../node_modules/angular-loading-bar/build/loading-bar",
         "ngMocks": "../node_modules/angular-mocks/angular-mocks",
-        "app": "./app"
+        "app": "app",
+        "appMocks": "mocks/mocks.init",
+        "appConstants": "core/constants/constants.init",
+        "appCore": "core/core.init"
+    },
+    
+    map: {
+        "*": {
+            "mocksPath/**/*": "./mocks"
+        },
+        'mocks': {
+            'auth': 'mocksPath/services/authorize/authorize.mock'
+        }
     },
 
     shim: {
+        /**
+         * Angular native
+         */
         'angular': {
             exports: 'angular'
         },
@@ -25,8 +40,27 @@ require.config({
         'ngLoadingBar':{
             deps: ['angular']
         },
-        'ngMocks':{
+        
+        /**
+         * Application
+         */
+        'ngMocks': {
             deps: ['angular']
+        },
+        'appMocks': {
+            deps: ['ngMocks']
+        },
+        // 'appConstants': {
+        //     deps: [
+        //         'app',
+        //         'appCore'
+        //     ]
+        // },
+        'mocks': {
+            deps: [
+                'appMocks',
+                'appConstants'
+                ]
         }
     },
 });

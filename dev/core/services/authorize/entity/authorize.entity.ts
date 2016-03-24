@@ -1,9 +1,11 @@
-interface IAuthorizeEntity {
-    
+export interface IAuthorizeEntity {
+    isAuthorized?: boolean;
+    userInfo?: {}
 }
 
-class AuthorizeEntity implements IAuthorizeEntity {
-    construct() {
-        
+export class AuthorizeEntity
+    implements IAuthorizeEntity {
+    constructor(public isAuthorized: boolean, public userInfo: {}) {
+
     }
 }

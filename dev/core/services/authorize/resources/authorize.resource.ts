@@ -1,4 +1,4 @@
-import '../entity/authorize.entity';
+import {IAuthorizeEntity, AuthorizeEntity} from '../entity/authorize.entity';
 
 interface IAuthorizeAccessResource {
     isLoggedIn(): IAuthorizeEntity;
@@ -6,7 +6,8 @@ interface IAuthorizeAccessResource {
 
 interface IAuthorizeResource
     extends ng.resource.IResource<IAuthorizeEntity> {
-    
+    isAuthorized?: boolean;
+    userInfo?: boolean;
 }
 
 export class AuthorizeResource 
