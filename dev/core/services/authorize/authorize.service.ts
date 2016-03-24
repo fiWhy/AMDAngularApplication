@@ -1,3 +1,4 @@
+import 'angular';
 import {authorizeConfig} from './config/authorize.config';
 import {AuthorizeResource} from './resources/authorize.resource';
 

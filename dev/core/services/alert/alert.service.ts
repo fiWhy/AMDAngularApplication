@@ -1,3 +1,5 @@
+import 'angular';
+
 export interface IAlertService {
     
 }

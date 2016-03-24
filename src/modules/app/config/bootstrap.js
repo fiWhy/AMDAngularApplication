@@ -1,3 +1,6 @@
-import './routes';
-export function appConfig() {
-}
+define(["require", "exports", './routes'], function (require, exports) {
+    "use strict";
+    function appConfig() {
+    }
+    exports.appConfig = appConfig;
+});

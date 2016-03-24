@@ -1,4 +1,6 @@
+import 'angular';
 import {routes} from './routes';
+
 angular.module('app.core.config', [])
     .config(config)
     .config(routes);

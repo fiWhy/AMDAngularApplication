@@ -1,15 +1,17 @@
-import { authorizeConfig } from './config/authorize.config';
-import { AuthorizeResource } from './resources/authorize.resource';
-class AuthorizeService {
-    constructor(AuthorizeService) {
-        this.AuthorizeService = AuthorizeService;
-    }
-    test() {
-        console.log('test');
-    }
-}
-AuthorizeService.$inject = ['AuthorizeResource'];
-angular.module('app.core.services.authorize', [])
-    .config(authorizeConfig)
-    .service('AuthorizeResource', AuthorizeResource)
-    .service('AuthorizeService', AuthorizeService);
+define(["require", "exports", './config/authorize.config', './resources/authorize.resource', 'angular'], function (require, exports, authorize_config_1, authorize_resource_1) {
+    "use strict";
+    var AuthorizeService = (function () {
+        function AuthorizeService(AuthorizeService) {
+            this.AuthorizeService = AuthorizeService;
+        }
+        AuthorizeService.prototype.test = function () {
+            console.log('test');
+        };
+        AuthorizeService.$inject = ['AuthorizeResource'];
+        return AuthorizeService;
+    }());
+    angular.module('app.core.services.authorize', [])
+        .config(authorize_config_1.authorizeConfig)
+        .service('AuthorizeResource', authorize_resource_1.AuthorizeResource)
+        .service('AuthorizeService', AuthorizeService);
+});

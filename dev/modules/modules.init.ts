@@ -1,3 +1,5 @@
+import 'angular';
+
 import './app/app.init';
 import './dashboard/dashboard.init';
 import './user/user.init';

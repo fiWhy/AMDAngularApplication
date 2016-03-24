@@ -1,12 +1,16 @@
-import '../entity/authorize.entity';
-export class AuthorizeResource {
-    constructor($resource, config) {
-        this.$resource = $resource;
-        this.config = config;
-        this.resourceLink = this.$resource(this.config.mainPaths.authorize);
-    }
-    isLoggedIn() {
-        return this.resourceLink.get();
-    }
-}
-AuthorizeResource.$inject = ['$resource', 'config'];
+define(["require", "exports", '../entity/authorize.entity'], function (require, exports) {
+    "use strict";
+    var AuthorizeResource = (function () {
+        function AuthorizeResource($resource, config) {
+            this.$resource = $resource;
+            this.config = config;
+            this.resourceLink = this.$resource(this.config.mainPaths.authorize);
+        }
+        AuthorizeResource.prototype.isLoggedIn = function () {
+            return this.resourceLink.get();
+        };
+        AuthorizeResource.$inject = ['$resource', 'config'];
+        return AuthorizeResource;
+    }());
+    exports.AuthorizeResource = AuthorizeResource;
+});

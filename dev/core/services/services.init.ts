@@ -1,3 +1,5 @@
+import 'angular';
+
 import './alert/alert.service';
 import './authorize/authorize.service';
 

@@ -1,3 +1,5 @@
+import 'angular';
+
 import {appConfig} from './config/bootstrap';
 import {appRoutesConfig} from './config/routes';
 import {AppService} from './services/app.service';

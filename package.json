@@ -18,9 +18,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.11.1",
-    "es6-module-loader": "^0.17.11",
     "gulp": "^3.9.1",
-    "gulp-es6-transpiler": "^1.0.1",
     "gulp-inject": "^4.0.0",
     "gulp-load-plugins": "^1.2.0",
     "gulp-nodemon": "^2.0.6",
