@@ -1,20 +1,39 @@
 function options() {
-    var dev = './dev/',
-        src = './src/';
+    var app = './app/',
+        src = './src/',
+        node = './node_modules/';
     return {
-        dev: dev,
+        app: app,
         src: src,
         
         sass: {
-            allSass: dev + 'styles/css/**/*.scss',
-            buildFiles: dev + 'styles/css/*.scss'
+            allSass: app + 'resources/styles/css/**/*.scss',
+            buildFiles: app + 'resources/styles/css/*.scss'
         },
-        ts: dev + '**/*.ts',
-        html: dev + '**/*.html',
+        ts: app + '**/*.ts',
+        
+        html: [
+            app + '**/*.html',
+            '!' + app + '/view/layout/index.html',
+            app + 'view/**/*.html',
+        ],
+        
+        fonts: [
+            app + 'resources/**/*.otf',
+            app + 'resources/**/*.eot',
+            app + 'resources/**/*.svg',
+            app + 'resources/**/*.ttf',
+            app + 'resources/**/*.woff',
+        ],
         
         inject: [
-            src + 'styles/**/materialize.css',
-            // src + '**/js/materialize*.js',
+            // node + 'bootstrap/dist/**/*.min.css',
+            app + 'resources/css/**/*.css',
+            '!' + app + 'resources/css/**/*_OLD.css',
+            '!' + app + 'resources/css/**/*.min.css',
+            // src + 'resources/styles/css/**/*.css',
+            // src + 'resources/styles/fonts/**/*.min.css',
+            app + 'resources/js/plugins/**/*.js',
             // src + 'scripts/*.js',
         ]
     }

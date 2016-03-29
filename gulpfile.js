@@ -5,17 +5,17 @@ var tsc = require('gulp-typescript');
 var browsersync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 var port = 80;
-var url = 'application:' + port + '/src';
+var url = 'application:' + port + '/app';
 var tslint = require('gulp-tslint');
 var tsProject = tsc.createProject('tsconfig.json');
 var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('default', ['build', 'watch-ts', 'watch-sass', 'watch-html'], function() {
+gulp.task('default', ['build', 'watch-html'], function() {
     var options = {
         proxy: url,
         port: port + 1,
         files: [
-            config.src + '**/*.*',
+            config.app + '**/*.*',
         ],
         ghostMode: {
             clicks: true,
@@ -34,42 +34,22 @@ gulp.task('default', ['build', 'watch-ts', 'watch-sass', 'watch-html'], function
     browsersync(options);
 });
 
-gulp.task('watching', ['build', 'watch-ts', 'watch-sass', 'watch-html']);
+gulp.task('watching', ['build', 'watch-html']);
 
-gulp.task('build', ['sass-compile', 'html-compile', 'ts-compile']);
-
-gulp.task('watch-ts', function() {
-    gulp.watch(config.ts, ['ts-compile']);
-});
-
-gulp.task('watch-sass', function() {
-    gulp.watch(config.sass.allSass, ['sass-compile']);
-});
+gulp.task('build', ['html-compile']);
 
 gulp.task('watch-html', function() {
     gulp.watch(config.html, ['html-compile']);
 });
 
-gulp.task('sass-compile', function() {
-    return gulp.src(config.sass.buildFiles)
-        .pipe($.sass())
-        .pipe(gulp.dest(config.src + 'styles/css'));
-});
-
-gulp.task('html-compile', function() {
+gulp.task('html-compile', ['index-compile'], function() {
     return gulp.src(config.html)
         .pipe($.inject(gulp.src(config.inject)))
-        .pipe(gulp.dest(config.src));
-})
-
-gulp.task('ts-lint', function() {
-    return gulp.src(config.ts).pipe(tslint()).pipe(tslint.report('prose'));
+        .pipe(gulp.dest(config.app));
 });
 
-gulp.task('ts-compile', function() {
-    var tsResult = gulp.src(config.ts)
-        .pipe(tsc(tsProject));
-
-    return tsResult.js
-        .pipe(gulp.dest(config.src));
+gulp.task('index-compile', function() {
+    return gulp.src(config.app + 'view/layout/index.html')
+        .pipe($.inject(gulp.src(config.inject)))
+        .pipe(gulp.dest(config.app));
 });
