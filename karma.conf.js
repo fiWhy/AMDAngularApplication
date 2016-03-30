@@ -1,6 +1,6 @@
 module.exports = function(config) {
     config.set({
-        basePath: './',
+        basePath: '.',
         singleRun: false,
         colors: true,
         plugins: ['karma-jasmine', 'karma-chrome-launcher', 'karma-systemjs'],
@@ -9,6 +9,10 @@ module.exports = function(config) {
         reporters: ['dots'],
 
         files: [
+            'node_modules/angular/angular.js',
+            'node_modules/angular-resource/angular-resource.js',
+            // 'node_modules/angular-mocks/angular-mocks.js',
+            'app/core/core.init.ts',
             'app/**/*.spec.ts'
         ],
 
@@ -23,18 +27,19 @@ module.exports = function(config) {
                 'node_modules/systemjs/dist/system.js',
                 'node_modules/systemjs/dist/system-polyfills.js',
                 'node_modules/es6-module-loader/dist/es6-module-loader.js',
+                'node_modules/typescript/lib/typescript.js'
             ],
-            includeFiles: [
-                'angular'
-            ],
-            meta: {
-                'node_modules/angular-ui-router/release/angular-ui-router.js': {
-                    format: 'global', // load this module as a global
-                    deps: [
-                        'angular'
-                    ]
-                }
-            },
+            // includeFiles: [
+            //     'angular'
+            // ],
+            // meta: {
+            //     'node_modules/angular-ui-router/release/angular-ui-router.js': {
+            //         format: 'global', // load this module as a global
+            //         deps: [
+            //             'angular'
+            //         ]
+            //     }
+            // },
             config: {
                 transpiler: 'typescript',
                 paths: {
@@ -45,9 +50,9 @@ module.exports = function(config) {
                     "angular-animate": "node_modules/angular-animate/angular-animate.js",
                     "angular-resource": "node_modules/angular-resource/angular-resource.js",
                     "loading-bar": "node_modules/angular-loading-bar/build/loading-bar.js",
-                    'systemjs': '../node_modules/systemjs/dist/system.js',
-                    'system-polyfills': '../node_modules/systemjs/dist/system-polyfills.js',
-                    'es6-module-loader': '../node_modules/es6-module-loader/dist/es6-module-loader.js',
+                    'systemjs': 'node_modules/systemjs/dist/system.js',
+                    'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
+                    'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
                 }
             },
         }
