@@ -18,89 +18,13 @@ $(function() {
     }, 200);
   });  
 
-  
-  // Search class for focus
-  $('.header-search-input').focus(
-  function(){
-      $(this).parent('div').addClass('header-search-wrapper-focus');
-  }).blur(
-  function(){
-      $(this).parent('div').removeClass('header-search-wrapper-focus');
-  });  
-
-  // Check first if any of the task is checked
-  $('#task-card input:checkbox').each(function() {
-    checkbox_check(this);
-  });
-
-  // Task check box
-  $('#task-card input:checkbox').change(function() {
-    checkbox_check(this);
-  });
-
-  // Check Uncheck function
-  function checkbox_check(el){
-      if (!$(el).is(':checked')) {
-          $(el).next().css('text-decoration', 'none'); // or addClass            
-      } else {
-          $(el).next().css('text-decoration', 'line-through'); //or addClass
-      }    
-  }
 
   /*----------------------
   * Plugin initialization
   ------------------------*/
   
-  $('select').material_select();
-  // Set checkbox on forms.html to indeterminate
-  var indeterminateCheckbox = document.getElementById('indeterminate-checkbox');
-  if (indeterminateCheckbox !== null)
-    indeterminateCheckbox.indeterminate = true;
-      
-  // Materialize Slider
-  $('.slider').slider({
-    full_width: true
-  });
-
-  // Materialize Dropdown
-  $('.dropdown-button').dropdown({
-    inDuration: 300,
-    outDuration: 125,
-    constrain_width: true, // Does not change width of dropdown to that of the activator
-    hover: false, // Activate on click
-    alignment: 'left', // Aligns dropdown to left or right edge (works with constrain_width)
-    gutter: 0, // Spacing from edge
-    belowOrigin: true // Displays dropdown below the button
-  });
-  // Translation Dropdown
-  $('.translation-button').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      constrain_width: false, // Does not change width of dropdown to that of the activator
-      hover: true, // Activate on hover
-      gutter: 0, // Spacing from edge
-      belowOrigin: true, // Displays dropdown below the button
-      alignment: 'left' // Displays dropdown with edge aligned to the left of button
-    }
-  );
-  // Notification Dropdown
-  $('.notification-button').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      constrain_width: false, // Does not change width of dropdown to that of the activator
-      hover: true, // Activate on hover
-      gutter: 0, // Spacing from edge
-      belowOrigin: true, // Displays dropdown below the button
-      alignment: 'left' // Displays dropdown with edge aligned to the left of button
-    }
-  );
-
   // Materialize Tabs
-  $('.tab-demo').show().tabs();
-  $('.tab-demo-active').show().tabs();
-
-  // Materialize Parallax
-  $('.parallax').parallax();
+  
   // Materialize Modal
   $('.modal-trigger').leanModal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -168,8 +92,6 @@ $(function() {
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
   
-  // Perfect Scrollbar
-  $('select').not('.disabled').material_select();
     var leftnav = $(".page-topbar").height();  
     var leftnavHeight = window.innerHeight - leftnav;
   $('.leftside-navigation').height(leftnavHeight).perfectScrollbar({

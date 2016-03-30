@@ -24,17 +24,25 @@
     <script src="../node_modules/systemjs/dist/system.js"></script>
     <script src="../node_modules/typescript/lib/typescript.js"></script>
     <script src="system.config.js"></script>
-    
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <script src="resources/js/materialize.min.js"></script>
-    
-        <script>
-      System.import('app.ts')
+
+
+    <!-- bower:js -->
+    <!-- endbower -->
+
+    <!-- inject:js -->
+    <!-- endinject -->
+
+    <script>
+        System.import('app.ts')
             .then(null, console.error.bind(console));
     </script>
-    
+
 
     <!--<script data-main="require.config" src="../node_modules/requirejs/require.js"></script>-->
+
+
+    <!-- bower:css -->
+    <!-- endbower -->
 
     <!-- inject:css -->
     <!-- endinject -->
@@ -65,6 +73,9 @@
 
 
     <div data-ng-include="'./view/layout/footer.html'"></div>
+
+
+
 </body>
 
 </html>

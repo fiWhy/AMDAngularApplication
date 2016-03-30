@@ -18,22 +18,16 @@ function options() {
             app + 'view/**/*.html',
         ],
         
-        fonts: [
-            app + 'resources/**/*.otf',
-            app + 'resources/**/*.eot',
-            app + 'resources/**/*.svg',
-            app + 'resources/**/*.ttf',
-            app + 'resources/**/*.woff',
-        ],
-        
         inject: [
             // node + 'bootstrap/dist/**/*.min.css',
-            app + 'resources/css/**/*.css',
-            '!' + app + 'resources/css/**/*_OLD.css',
-            '!' + app + 'resources/css/**/*.min.css',
+            app + 'styles/css/**/*.css',
+            app + 'scripts/js/**/*.js',
+            app + 'scripts/scripts.*'
             // src + 'resources/styles/css/**/*.css',
             // src + 'resources/styles/fonts/**/*.min.css',
-            app + 'resources/js/plugins/**/*.js',
+            // app + 'resources/js/plugins/**/*!(min).css',
+            // app + 'resources/js/plugins/**/*.min.js',
+            // app + 'resources/js/plugins/**/*-script.js',
             // src + 'scripts/*.js',
         ]
     }

@@ -9,6 +9,7 @@ var url = 'application:' + port + '/app';
 var tslint = require('gulp-tslint');
 var tsProject = tsc.createProject('tsconfig.json');
 var sourcemaps = require('gulp-sourcemaps');
+var wiredep = require('wiredep').stream;
 
 gulp.task('default', ['build', 'watch-html'], function() {
     var options = {
@@ -45,6 +46,9 @@ gulp.task('watch-html', function() {
 gulp.task('html-compile', ['index-compile'], function() {
     return gulp.src(config.html)
         .pipe($.inject(gulp.src(config.inject)))
+        .pipe(wiredep({
+            bowerJson: require('./bower.json')
+        }))
         .pipe(gulp.dest(config.app));
 });
 

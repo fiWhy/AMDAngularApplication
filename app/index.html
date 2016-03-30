@@ -24,28 +24,47 @@
     <script src="../node_modules/systemjs/dist/system.js"></script>
     <script src="../node_modules/typescript/lib/typescript.js"></script>
     <script src="system.config.js"></script>
-    
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <script src="resources/js/materialize.min.js"></script>
-    
-        <script>
-      System.import('app.ts')
+
+
+    <!-- bower:js -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/prism/prism.js"></script>
+    <script src="lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="lib/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="lib/Materialize/bin/materialize.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-mocks/angular-mocks.js"></script>
+    <!-- endbower -->
+
+    <!-- inject:js -->
+    <script src="/app/scripts/js/plugins.js"></script>
+    <!-- endinject -->
+
+    <script>
+        System.import('app.ts')
             .then(null, console.error.bind(console));
     </script>
-    
+
 
     <!--<script data-main="require.config" src="../node_modules/requirejs/require.js"></script>-->
 
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/prism/themes/prism.css" />
+    <link rel="stylesheet" href="lib/perfect-scrollbar/css/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="lib/Materialize/bin/materialize.css" />
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css" />
+    <!-- endbower -->
+
     <!-- inject:css -->
-    <link rel="stylesheet" href="/app/resources/css/materialize.css">
-    <link rel="stylesheet" href="/app/resources/css/style.css">
-    <link rel="stylesheet" href="/app/resources/css/angular-material/angular-material.css">
-    <link rel="stylesheet" href="/app/resources/css/custom/custom.css">
-    <link rel="stylesheet" href="/app/resources/css/layouts/style-fullscreen.css">
-    <link rel="stylesheet" href="/app/resources/css/plugins/media-hover-effects.css">
-    <link rel="stylesheet" href="/app/resources/css/materialize/v3.1/js/plugins/jquery.nestable/nestable.css">
-    <link rel="stylesheet" href="/app/resources/css/materialize/v3.1/js/plugins/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="/app/resources/css/materialize/v3.1/js/plugins/prism/prism.css">
+    <link rel="stylesheet" href="/app/styles/css/style.css">
+    <link rel="stylesheet" href="/app/styles/css/layout/style-fullscreen.css">
     <!-- endinject -->
 
     <!--[if lt IE 9]>
@@ -74,6 +93,9 @@
 
 
     <div data-ng-include="'./view/layout/footer.html'"></div>
+
+
+
 </body>
 
 </html>
