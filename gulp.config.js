@@ -7,8 +7,8 @@ function options() {
         src: src,
         
         sass: {
-            allSass: app + 'resources/styles/css/**/*.scss',
-            buildFiles: app + 'resources/styles/css/*.scss'
+            allSass: app + 'styles/sass/**/*.scss',
+            buildFiles: app + 'styles/css/'
         },
         ts: app + '**/*.ts',
         

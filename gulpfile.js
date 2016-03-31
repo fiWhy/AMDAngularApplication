@@ -52,6 +52,12 @@ gulp.task('html-compile', ['index-compile'], function() {
         .pipe(gulp.dest(config.app));
 });
 
+gulp.task('sass-compile', function() {
+    return gulp.src(config.sass.allSass)
+        .pipe($.sass())
+        .pipe(gulp.dest(config.sass.buildFiles));
+});
+
 gulp.task('index-compile', function() {
     return gulp.src(config.app + 'view/layout/index.html')
         .pipe($.inject(gulp.src(config.inject)))
