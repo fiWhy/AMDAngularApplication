@@ -1,9 +1,7 @@
-import {routes} from './routes.ts';
-
 angular.module('app.core.config', [])
     .config(config)
-    .config(routes);
 
+config.$inject = ['$locationProvider', '$mdThemingProvider'];
 export function config($locationProvider, $mdThemingProvider) {
     $mdThemingProvider.theme('default')
         .primaryPalette('light-blue')

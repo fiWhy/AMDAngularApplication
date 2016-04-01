@@ -1,0 +1,21 @@
+[ERR!] cwd  : /home/www-data/www/tstest
+[ERR!] os   : Linux 3.19.0-56-generic
+[ERR!] argv : "/usr/bin/nodejs" "/usr/bin/tsd" "install" "angular-cookies" "--save"
+[ERR!] node : v4.4.2
+[ERR!] tsd  : 0.6.5
+[ERR!] Error: EPERM: operation not permitted, chmod '/home/www-data/www/tstest'
+[ERR!] CODE : EPERM
+[ERR!] Error: EPERM: operation not permitted, chmod '/home/www-data/www/tstest'
+[ERR!] 
+Please try running this command again as root/Administrator.
+[ERR!] 
+Error: EPERM: operation not permitted, chmod '/home/www-data/www/tstest'
+    at Error (native)
+
+[ERR!] tsd.json: {"version":"v4","repo":"borisyankov/DefinitelyTyped","ref":"master","path":"typings","bundle":"typings/tsd.d.ts","installed":{"angularjs/angular.d.ts":{"commit":"299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"},"jquery/jquery.d.ts":{"commit":"299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"},"angularjs/angular-mocks.d.ts":{"commit":"299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"},"angularjs/angular-resource.d.ts":{"commit":"b14601af3fb2ad72d5048e94188a569a1838fb9c"},"requirejs/require.d.ts":{"commit":"a44529fcb1e1cdc0355e71c42a6048de99b57c34"},"jasmine/jasmine.d.ts":{"commit":"299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"}}}
+
+[ERR!] .tsdrc could not be retrieved
+
+[ERR!] Please include the following file with any support request:
+    /home/www-data/www/tstest/tsd-debug.log
+

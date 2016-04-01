@@ -3,6 +3,6 @@ import {DashboardService} from './services/dashboard.service.ts';
 import {DashboardController} from './controllers/dashboard.controller.ts';
 
 angular.module('app.modules.dashboard', [])
-    .config(dashboardConfig)
-    .service(DashboardService)
-    .controller(DashboardController);
+    .service('DashboardService', DashboardService)
+    .controller('DashboardController', DashboardController)
+    .config(dashboardConfig);

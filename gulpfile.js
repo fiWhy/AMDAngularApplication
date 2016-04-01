@@ -6,9 +6,7 @@ var browsersync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 var port = 80;
 var url = 'application:' + port + '/app';
-var tslint = require('gulp-tslint');
 var tsProject = tsc.createProject('tsconfig.json');
-var sourcemaps = require('gulp-sourcemaps');
 var wiredep = require('wiredep').stream;
 
 gulp.task('default', ['build', 'watch-html'], function() {

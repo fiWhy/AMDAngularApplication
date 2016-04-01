@@ -1,4 +1,5 @@
 import {IAuthorizeEntity, AuthorizeEntity} from '../entity/authorize.entity';
+import {IUserEntity, UserEntity} from '../entity/user.entity';
 
 interface IAuthorizeAccessResource {
     isLoggedIn(): IAuthorizeEntity;
@@ -12,13 +13,14 @@ interface IAuthorizeResource
 
 export class AuthorizeResource 
     implements IAuthorizeAccessResource{
-        static $inject = ['$resource', 'config'];
+        static $inject = ['$resource', '$cookies', 'config'];
         private resourceLink: ng.resource.IResourceClass<IAuthorizeResource>;
-        constructor(private $resource: ng.resource.IResourceService, private config) {
+        constructor(private $resource: ng.resource.IResourceService, private $cookies: ng.cookies.ICookiesService, private config) {
             this.resourceLink = this.$resource(this.config.mainPaths.authorize);
         }
         
-        isLoggedIn(): IAuthorizeEntity {
+        login(): IAuthorizeEntity | boolean {
             return this.resourceLink.get();
         }
+        
     }

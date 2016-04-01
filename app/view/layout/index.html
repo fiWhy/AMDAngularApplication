@@ -58,21 +58,20 @@
 <![endif]-->
 </head>
 
-<body data-ng-controller="AppController as vm">
-    <div data-ng-include="'./view/layout/header.html'"></div>
+<body data-ng-controller="AppController as application">
+    <div data-ng-include="application.isAuthorized?'./view/layout/header.html':''"></div>
     <!-- START MAIN -->
     <div id="main">
         <!-- START WRAPPER -->
         <div class="wrapper">
-            <div data-ng-include="'./view/elements/sidebar.html'"></div>
-            <div data-ng-include="'./view/layout/content.html'"></div>
+            <div data-ng-include="application.isAuthorized?'./view/elements/sidebar.html':''"></div>
             <ui-view></ui-view>
-            <div data-ng-include="'./view/elements/rightsidebar.html'"></div>
+            <div data-ng-include="application.isAuthorized?'./view/elements/rightsidebar.html':''"></div>
         </div>
     </div>
 
 
-    <div data-ng-include="'./view/layout/footer.html'"></div>
+    <div data-ng-include="application.isAuthorized?'./view/layout/footer.html':''"></div>
 
 
 
