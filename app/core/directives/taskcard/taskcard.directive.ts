@@ -1,6 +1,6 @@
-export function TaskCardDirective() {
-
-    function taskCard(scope, element, attrs) {
+export class TaskCardDirective {
+    restrict: string = 'AC';
+    link(scope, element, attrs) {
         // Check Uncheck function
         function checkbox_check(el) {
             if (!$(el).is(':checked')) {
@@ -9,20 +9,15 @@ export function TaskCardDirective() {
                 $(el).next().css('text-decoration', 'line-through'); //or addClass
             }
         }
-        
+
         var checkboxes = $(element).find('input:checkbox');
-        
+
         checkboxes.each((key, el) => {
-             checkbox_check(el);
+            checkbox_check(el);
         })
-        
+
         checkboxes.on('change', (e) => {
             checkbox_check(e.target);
         })
-    }
-
-    return {
-        restrict: 'AC',
-        link: taskCard
     }
 }

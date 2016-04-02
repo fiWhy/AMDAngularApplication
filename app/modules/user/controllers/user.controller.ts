@@ -1,22 +1,38 @@
 import {IUserService} from '../services/user.service.ts';
-import {IAlertService} from 'core/services/alert/alert.service.ts';
+import {IToastAlertService} from 'core/services/alert/alerts/toast.alert.service.ts';
+import {ISweetAlertService} from 'core/services/alert/alerts/sweet.alert.service.ts';
 
 interface IUserController {
 
 }
 
-export class UserController 
+export class UserController
     implements IUserController {
-        static $inject = ['UserService', 'AlertService'];
-        loginData: {};
-        constructor(private UserService: IUserService, private AlertService: IAlertService) {
-        }
-        
-        login() {
-            this.AlertService.setVertical('top')
-                .setHorizontal('left')
-                .showCustomAlert('Test', 'UserController');
-                
-            this.UserService.login()
-        }
+    static $inject = ['UserService', 'ToastAlertService', 'SweetAlertService'];
+    loginData: {};
+    constructor(private UserService: IUserService,
+        private ToastService: IToastAlertService,
+        private SweetAlertService: ISweetAlertService) {
+    }
+
+    login() {
+        this.SweetAlertService
+            .setOptions({
+                type: 'warning',
+                showCancelButton: true
+            })
+            .setCommonCallback((result) => {
+                if (result) {
+                    console.log('hello');
+                    this.SweetAlertService
+                        .setOptions({
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        })
+                        .showAlert('Succeed!');
+                }
+            })
+            .showAlert('Hello!');
+        this.UserService.login()
+    }
 }

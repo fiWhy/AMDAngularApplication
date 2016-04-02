@@ -1,15 +1,15 @@
-export function DropdownDirective() {
-
-    function link(scope, element, attrs) {
+export class DropdownDirective {
+    restrict: 'EAC';
+    link(scope, element, attrs) {
         // Materialize Dropdown
         var constrain_width = true,
             hover = false;
-        
-        if(attrs.type == 'notification') {
+
+        if (attrs.type == 'notification') {
             constrain_width = false;
             hover = true;
         }
-        
+
         $(element).dropdown({
             inDuration: 300,
             outDuration: 225,
@@ -19,10 +19,5 @@ export function DropdownDirective() {
             gutter: 0, // Spacing from edge
             belowOrigin: true // Displays dropdown below the button
         });
-    }
-
-    return {
-        restrict: 'EAC',
-        link: link
     }
 }

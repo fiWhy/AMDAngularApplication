@@ -3,7 +3,7 @@ import {SelectDirective} from './select/select.directive.ts';
 
 angular.module('app.core.directives.formelement', [])
     //# Input directive
-    .directive('input', InputDirective)
+    .directive('input', () => new InputDirective)
     
     //# Select directive
-    .directive('select', SelectDirective)
+    .directive('select', () => new SelectDirective)

@@ -1,9 +1,11 @@
-function indeterminateCheckbox(element) {
-    // Set checkbox on forms.html to indeterminate
-    if (element[0].id == 'indeterminate-checkbox')
-        element[0].indeterminate = true;
-}
+export class Checkbox {
+    constructor(scope, element, attrs) {
+        this.indeterminateCheckbox(element);
+    }
 
-export function Checkbox(scope, element, attrs) {
-    indeterminateCheckbox(element);
+    indeterminateCheckbox(element) {
+        // Set checkbox on forms.html to indeterminate
+        if (element[0].id == 'indeterminate-checkbox')
+            element[0].indeterminate = true;
+    }
 }
