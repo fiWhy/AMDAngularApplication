@@ -13,7 +13,9 @@ class AuthorizeService
     static $inject: string[] = ['AuthorizeResource', '$cookies'];
 
     constructor(private AuthorizeResource,
-        private $cookies: ng.cookies.ICookiesService) { }
+        private $cookies: ng.cookies.ICookiesService) { 
+            
+        }
 
     isLoggedIn(): boolean {
         var token = this.$cookies.get('token');

@@ -58,7 +58,8 @@
 <![endif]-->
 </head>
 
-<body data-ng-controller="AppController as application">
+<body data-ng-controller="AppController as application" class="cyan">
+    <alert></alert>
     <div data-ng-include="application.isAuthorized?'./view/layout/header.html':''"></div>
     <!-- START MAIN -->
     <div id="main">

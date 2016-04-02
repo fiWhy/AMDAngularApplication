@@ -1,3 +1,7 @@
 md-card .md-actions, md-card md-card-actions {
     margin: 0px !important;
 }
+
+html, body {
+    background-color: transparent !important;
+}

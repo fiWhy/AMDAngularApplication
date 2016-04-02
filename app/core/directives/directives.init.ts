@@ -2,7 +2,6 @@ import './formelement/formelement.ts';
 import {TaskCardDirective} from './taskcard/taskcard.directive.ts';
 import {SliderDirective} from './slider/slider.directive.ts';
 import {DropdownDirective} from './dropdown/dropdown.directive.ts';
-import {TabsDirective} from './tabs/tabs.directive.ts';
 import {ParallaxDirective} from './parallax/parallax.directive.ts';
 
 angular.module('app.core.directives', [
@@ -17,9 +16,6 @@ angular.module('app.core.directives', [
     
     //# Dropdown 
     .directive('dropdown', DropdownDirective)
-    
-    //# Tab 
-    .directive('tabs', TabsDirective)
     
     //# Parallax 
     .directive('parallax', ParallaxDirective)
