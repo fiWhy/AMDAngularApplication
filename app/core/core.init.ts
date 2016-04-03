@@ -4,6 +4,8 @@ import './directives/directives.init.ts';
 import './config/config.ts';
 
 angular.module('app.core', [
+    
+    'ngMockE2E',
     'app.core.constants',
     'app.core.directives',
     'app.core.config',

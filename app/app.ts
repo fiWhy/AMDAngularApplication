@@ -8,7 +8,6 @@ var app = angular.module('app', [
     'ngMaterial',
     'ngAnimate',
     'ngResource',
-    // 'ngMockE2E',
     'ui.router',
     'app.core',
     'app.modules',

@@ -8,31 +8,23 @@ interface IUserController {
 
 export class UserController
     implements IUserController {
-    static $inject = ['UserService', 'ToastAlertService', 'SweetAlertService'];
+    static $inject = ['UserService', 'ToastAlertService', 'SweetAlertService', '$state'];
     loginData: {};
     constructor(private UserService: IUserService,
         private ToastService: IToastAlertService,
-        private SweetAlertService: ISweetAlertService) {
+        private SweetAlertService: ISweetAlertService,
+        private $state: ng.ui.IStateService) {
     }
 
     login() {
-        this.SweetAlertService
-            .setOptions({
-                type: 'warning',
-                showCancelButton: true
-            })
-            .setCommonCallback((result) => {
-                if (result) {
-                    console.log('hello');
-                    this.SweetAlertService
-                        .setOptions({
-                            closeOnConfirm: true,
-                            closeOnCancel: true
-                        })
-                        .showAlert('Succeed!');
-                }
-            })
-            .showAlert('Hello!');
-        this.UserService.login()
+        this.UserService.login(this.loginData).$promise
+            .then((response) => {
+              this.$state.go('dashboard');
+            });
+    }
+    
+    logout() {
+        this.UserService.logout();
+        this.$state.go('user.login');
     }
 }
