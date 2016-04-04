@@ -1,5 +1,6 @@
 import {authorizeConfig} from './config/authorize.config.ts';
 import {AuthorizeResource} from './resources/authorize.resource.ts';
+import {IFullResponseEntity} from 'core/entity/fullresponse.entity.ts';
 import {IUserEntity} from 'core/entity/user.entity.ts';
 import {ITokenEntity} from 'core/entity/token.entity.ts';
 
@@ -28,10 +29,10 @@ class AuthorizeService
 
     }
 
-    private authorize(userInfo: IUserEntity, tokenInfo: ITokenEntity): void {
-        this.$cookies.put('token', tokenInfo.access_token);
-        this.$cookies.put('tokenExpireTime', tokenInfo.tokenExpireTime);
-        this.$cookies.put('user', userInfo);
+    private authorize(userData: IUserEntity, tokenData: ITokenEntity): void {
+        this.$cookies.put('access_token', tokenData.access_token);
+        this.$cookies.put('tokenExpireTime', tokenData.tokenExpireTime);
+        this.$cookies.put('user', userData);
     }
 
     checkIsTokenExpired(): boolean {
@@ -39,7 +40,7 @@ class AuthorizeService
     }
 
     isLoggedIn(): boolean {
-        var token = this.$cookies.get('token');
+        var token = this.$cookies.get('access_token');
         return token !== undefined;
     }
 
@@ -49,19 +50,23 @@ class AuthorizeService
     }
 
     logout(): void {
-        this.$cookies.remove('token');
+        this.$cookies.remove('access_token');
         this.$cookies.remove('tokenExpireTime');
         this.$cookies.remove('user');
     }
 
-    login(data): IUserEntity {
+    login(data): ng.IPromise<IFullResponseEntity> {
         var user = this.AuthorizeResource.login(data);
-        user.$promise.then((response) => {
-            if (response.responseData && (response.responseData.code === undefined || response.responseData.code == 200)) {
-                this.authorize(response.userInfo, response.tokenInfo);
+        user.then((response) => {
+            if (response.meta.code == 200) {
+                this.authorize(response.data.userData, response.data.tokenData);
             }
         })
         return user;
+    }
+    
+    reset(data): ng.IPromise<IFullResponseEntity> {
+        return this.AuthorizeResource.reset(data);
     }
 
 }

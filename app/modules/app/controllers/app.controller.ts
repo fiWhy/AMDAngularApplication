@@ -13,7 +13,7 @@ export class AppController
         var self = this;
         $rootScope.$on('$stateChangeStart', function(event, toState) {
             self.isAuthorized = AppService.checkForAuth();
-            var authLocation = /user\.(login|forgot)/.test(toState.name);
+            var authLocation = /user\.(login|reset)/.test(toState.name);
             if (self.isAuthorized) {
                 if (authLocation)
                     $location.path('/dashboard');

@@ -1,9 +1,12 @@
 export interface IResponseEntity {
-    code: number;
-    error_message: string;
+    meta;
 }
 
 export class ResponseEntity
     implements IResponseEntity {
-    constructor(public code: number, public error_message: string) {}
+    meta = {};
+    constructor(code: number, error_message: string) {
+        this.meta.code = code;
+        this.meta.error_message = error_message;
+    }
 }

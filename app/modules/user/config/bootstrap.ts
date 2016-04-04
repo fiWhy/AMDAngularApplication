@@ -9,5 +9,9 @@ export function userConfig($stateProvider) {
             url: "/login",
             controller: 'UserController as user',
             templateUrl: "./modules/user/templates/login.html"
+        }).state('user.reset', {
+            url: "/reset",
+            controller: 'UserController as user',
+            templateUrl: "./modules/user/templates/forgot.html"
         });
 };

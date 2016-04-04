@@ -15,8 +15,8 @@ export class SweetAlertService
            confirmButtonColor: "#DD6B55",   
            confirmButtonText: "Ok!",   
            cancelButtonText: "No, cancel plx!",   
-           closeOnConfirm: false,   
-           closeOnCancel: false,
+           closeOnConfirm: true,   
+           closeOnCancel: true,
            text: '',
            title: ''
         }

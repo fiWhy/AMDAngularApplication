@@ -1,14 +1,16 @@
-import {IAuthorizeEntity, AuthorizeEntity} from 'core/entity/authorize.entity.ts';
+import {IFullResponseEntity} from 'core/entity/fullresponse.entity.ts';
 import {IUserEntity, UserEntity} from 'core/entity/user.entity.ts';
 import {IResponseEntity, ResponseEntity} from 'core/entity/response.entity.ts';
 import {ITokenEntity, TokenEntity} from 'core/entity/token.entity.ts';
 
 interface IAuthorizeAccessResource {
-    isLoggedIn(): IAuthorizeEntity;
+    isLoggedIn(): boolean;
+    login(data): ng.IPromise<IFullResponseEntity>;
+    reset(data): ng.IPromise<IFullResponseEntity>;
 }
 
 interface IAuthorizeResource
-    extends ng.resource.IResource<IAuthorizeEntity> {
+    extends ng.resource.IResource<IFullResponseEntity> {
     isAuthorized?: boolean;
     userInfo?: boolean;
 }
@@ -21,20 +23,24 @@ export class AuthorizeResource
         this.resourceLink = this.$resource(this.config.mainPaths.authorize, {}, {
             login: {
                 method: 'POST',
-                isArray: false,
-                transformResponse: (data, headers) => {
-                    return new AuthorizeEntity(
-                        new ResponseEntity(),
-                        new UserEntity(data.username, data.role, data.token, data.tokenExpireTime),
-                        new TokenEntity(data.token, data.tokenExpireTime, false)
-                    );
-                }
+                isArray: false
+            },
+            reset: {
+                method: 'POST',
+                params: {
+                    action: 'reset'
+                },
+                isArray: false
             }
         });
     }
 
-    login(data): IAuthorizeEntity | boolean {
-        return this.resourceLink.login(data);
+    login(data): ng.IPromise<IFullResponseEntity> {
+        return this.resourceLink.login(data).$promise;
+    }
+
+    reset(data): ng.IPromise<IFullResponseEntity> {
+        return this.resourceLink.reset(data).$promise;
     }
 
 }

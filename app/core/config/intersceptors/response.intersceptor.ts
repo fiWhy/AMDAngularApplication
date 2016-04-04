@@ -1,14 +1,11 @@
 import {IResponseEntity, ResponseEntity} from 'core/entity/response.entity.ts';
 export class ResponseIntersceptor {
     response(response) {
-        return {
-            meta: new ResponseEntity(response.status),
-            data: response.data
-        }
+        if(!response.meta)
+            response.meta = new ResponseEntity(response.headers.code, response.headers.error || 'Something went wrong!');
+        return response;
     }
     responseError(response) {
-        return {
-            meta: new ResponseEntity(response.status, response.error || 'error')
-        }
+        return response;
     }
 }

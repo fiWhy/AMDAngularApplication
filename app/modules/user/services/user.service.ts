@@ -1,4 +1,5 @@
 import {IAuthorizeService} from 'core/services/authorize/authorize.service.ts';
+import {IResponseEntity} from 'core/entity/response.entity.ts';
 
 interface IUserService {
     login(data);
@@ -17,5 +18,9 @@ export class UserService
         
         logout(): void {
             this.AuthorizeService.logout();
+        }
+        
+        reset(data): IResponseEntity {
+            return this.AuthorizeService.reset(data);
         }
 }

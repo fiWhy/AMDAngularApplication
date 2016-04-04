@@ -3,13 +3,15 @@ import {IToastAlertService} from 'core/services/alert/alerts/toast.alert.service
 import {ISweetAlertService} from 'core/services/alert/alerts/sweet.alert.service.ts';
 
 interface IUserController {
-
+    loginData: {};
+    resetData: {};
 }
 
 export class UserController
     implements IUserController {
     static $inject = ['UserService', 'ToastAlertService', 'SweetAlertService', '$state'];
     loginData: {};
+    resetData: {};
     constructor(private UserService: IUserService,
         private ToastAlertService: IToastAlertService,
         private SweetAlertService: ISweetAlertService,
@@ -17,25 +19,14 @@ export class UserController
     }
 
     login() {
-        this.UserService.login(this.loginData).$promise
+        this.UserService.login(this.loginData)
             .then((response) => {
-                console.log(response);
-                if (response.responseData && (response.responseData.code === undefined || response.responseData.code == 200)) {
+                if (response.meta.code == 200) {
                     this.$state.go('dashboard');
                 } else {
                     this.SweetAlertService.setOptions({
-                        showCancelButton: true
-                    }).setCommonCallback((result) => {
-                        if (result) {
-                            this.SweetAlertService.setOptions({
-                                closeOnConfirm: true
-                            }).showAlert('Success!', 'Success');
-                        } else {
-                            this.SweetAlertService.setOptions({
-                                closeOnConfirm: true
-                            }).showAlert('Cancelled!', 'Cancelled');
-                        }
-                    }).showAlert('Error!', 'Hello!');
+                        type: 'error'
+                    }).showAlert('Error!', response.meta.error_message);
                 }
             });
     }
@@ -43,5 +34,21 @@ export class UserController
     logout() {
         this.UserService.logout();
         this.$state.go('user.login');
+    }
+
+    reset() {
+        this.UserService.reset(this.resetData)
+            .then((response) => {
+                if (response.meta.code == 200) {
+                    this.SweetAlertService.setOptions({
+                        closeOnConfirm: true
+                    }).showAlert('Success!', 'Your password has been sent to your email!');
+                } else {
+                    this.SweetAlertService.setOptions({
+                        closeOnConfirm: true,
+                        type: 'error'
+                    }).showAlert('Error!', response.meta.error_message);
+                }
+            })
     }
 }
