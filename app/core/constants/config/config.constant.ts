@@ -5,7 +5,7 @@ export function ConfigConstant() {
         documentRoot: 'app',
         modulesRoot: 'app/modules',
         mainPaths: {
-            menu: apiUrl + 'menu',
+            menu: apiUrl + 'menu/:name',
             authorize: apiUrl + 'authorize/:action'
         },
         language: 'en',

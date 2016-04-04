@@ -1,6 +1,8 @@
 import {ResponseIntersceptor} from './intersceptors/response.intersceptor.ts';
+import {RequestInterceptor} from './intersceptors/request.intersceptor.ts';
 angular.module('app.core.config', [])
     .factory('ResponseIntersceptor', () => new ResponseIntersceptor)
+    .factory('RequestIntersceptor', ['$cookies', ($cookies) => new RequestInterceptor($cookies)])
     .run(configMockRoutes)
     .config(config)
     .config(httpConfig);
@@ -24,4 +26,5 @@ function configMockRoutes($httpBackend: ng.IHttpBackendService) {
 httpConfig.$inject = ['$httpProvider'];
 function httpConfig($httpProvider: ng.IHttpProvider) {
     $httpProvider.interceptors.push('ResponseIntersceptor');
+    $httpProvider.interceptors.push('RequestIntersceptor');
 }

@@ -4,15 +4,14 @@ import {IResponseEntity, ResponseEntity} from 'core/entity/response.entity.ts';
 import {ITokenEntity, TokenEntity} from 'core/entity/token.entity.ts';
 
 interface IAuthorizeAccessResource {
-    isLoggedIn(): boolean;
     login(data): ng.IPromise<IFullResponseEntity>;
     reset(data): ng.IPromise<IFullResponseEntity>;
 }
 
 interface IAuthorizeResource
     extends ng.resource.IResource<IFullResponseEntity> {
-    isAuthorized?: boolean;
-    userInfo?: boolean;
+        login;
+        reset;
 }
 
 export class AuthorizeResource

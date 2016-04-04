@@ -135,8 +135,7 @@ $(function() {
         menuWidth: 240,
         edge: 'left', // Choose the horizontal origin     
         //closeOnClick:true, // Set if default menu open is true
-        menuOut:false // Set if default menu open is true
-        
+        menuOut:false // Set if default menu open is tru        
       });
 
   // HORIZONTAL MENU (Layout 03)
