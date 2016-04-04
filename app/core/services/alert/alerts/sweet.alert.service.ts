@@ -16,7 +16,9 @@ export class SweetAlertService
            confirmButtonText: "Ok!",   
            cancelButtonText: "No, cancel plx!",   
            closeOnConfirm: false,   
-           closeOnCancel: false
+           closeOnCancel: false,
+           text: '',
+           title: ''
         }
     }
 

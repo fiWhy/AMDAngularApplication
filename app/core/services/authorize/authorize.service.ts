@@ -56,11 +56,11 @@ class AuthorizeService
 
     login(data): IUserEntity {
         var user = this.AuthorizeResource.login(data);
-        if (!user.responseData || !user.responseData.code || user.responseData.code == 200) {
-            user.$promise.then((response) => {
+        user.$promise.then((response) => {
+            if (response.responseData && (response.responseData.code === undefined || response.responseData.code == 200)) {
                 this.authorize(response.userInfo, response.tokenInfo);
-            })
-        }
+            }
+        })
         return user;
     }
 
