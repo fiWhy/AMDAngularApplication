@@ -1,44 +1,60 @@
-import {IFullResponseEntity} from 'core/entity/fullresponse.entity.ts';
+import {IResponseEntity} from 'core/entity/response.entity';
 import {IUserEntity, UserEntity} from 'core/entity/user.entity.ts';
-import {IResponseEntity, ResponseEntity} from 'core/entity/response.entity.ts';
-import {ITokenEntity, TokenEntity} from 'core/entity/token.entity.ts';
+import {IAuthorizeEntity, AuthorizeEntity} from '../entity/authorize.entity.ts';
 
 interface IAuthorizeAccessResource {
-    login(data): ng.IPromise<IFullResponseEntity>;
-    reset(data): ng.IPromise<IFullResponseEntity>;
+    login(data: { username: string, password: string }): ng.IPromise<IResponseEntity<IAuthorizeEntity>>;
+    reset(data: { username: string, email: string }): ng.IPromise<IResponseEntity<IUserEntity>>;
+}
+
+interface IReset extends ng.resource.IResource<IReset> {
+    username: string;
+    email: string;
+}
+
+interface ILogin extends ng.resource.IResource<ILogin> {
+    username: string;
+    password: string;
 }
 
 interface IAuthorizeResource
-    extends ng.resource.IResource<IFullResponseEntity> {
-        login;
-        reset;
+    extends ng.resource.IResourceClass<IResponseEntity> {
+    login(ILogin): IResponseEntity<IAuthorizeEntity>;
+    reset(IReset): IResponseEntity<IUserEntity>;
 }
 
 export class AuthorizeResource
     implements IAuthorizeAccessResource {
     static $inject = ['$resource', '$cookies', 'config'];
-    private resourceLink: ng.resource.IResourceClass<IAuthorizeResource>;
-    constructor(private $resource: ng.resource.IResourceService, private $cookies: ng.cookies.ICookiesService, private config) {
-        this.resourceLink = this.$resource(this.config.mainPaths.authorize, {}, {
-            login: {
-                method: 'POST',
-                isArray: false
+    private resourceLink;
+    constructor(private $resource: ng.resource.IResourceService,
+        private $cookies: ng.cookies.ICookiesService,
+        private config) {
+
+        var loginAction: ng.resource.IActionDescriptor = {
+            method: 'POST',
+            isArray: false
+        };
+
+        var resetAction: ng.resource.IActionDescriptor = {
+            method: 'POST',
+            params: {
+                action: 'reset'
             },
-            reset: {
-                method: 'POST',
-                params: {
-                    action: 'reset'
-                },
-                isArray: false
-            }
+            isArray: false
+        }
+
+        this.resourceLink = $resource(config.mainPaths.authorize, {}, {
+            login: loginAction,
+            reset: resetAction
         });
     }
 
-    login(data): ng.IPromise<IFullResponseEntity> {
+    login(data: { username: string, password: string }): ng.IPromise<IResponseEntity<IAuthorizeEntity>> {
         return this.resourceLink.login(data).$promise;
     }
 
-    reset(data): ng.IPromise<IFullResponseEntity> {
+    reset(data: { username: string, email: string }): ng.IPromise<IResponseEntity<IUserEntity>> {
         return this.resourceLink.reset(data).$promise;
     }
 

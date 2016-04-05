@@ -21,12 +21,12 @@ export class UserController
     login() {
         this.UserService.login(this.loginData)
             .then((response) => {
-                if (response.meta.code == 200) {
+                if (response.status == 200) {
                     this.$state.go('dashboard');
                 } else {
                     this.SweetAlertService.setOptions({
                         type: 'error'
-                    }).showAlert('Error!', response.meta.error_message);
+                    }).showAlert('Error!', response.data.error_message);
                 }
             });
     }
@@ -39,7 +39,7 @@ export class UserController
     reset() {
         this.UserService.reset(this.resetData)
             .then((response) => {
-                if (response.meta.code == 200) {
+                if (response.status == 200) {
                     this.SweetAlertService.setOptions({
                         closeOnConfirm: true
                     }).showAlert('Success!', 'Your password has been sent to your email!');
@@ -47,7 +47,7 @@ export class UserController
                     this.SweetAlertService.setOptions({
                         closeOnConfirm: true,
                         type: 'error'
-                    }).showAlert('Error!', response.meta.error_message);
+                    }).showAlert('Error!', response.data.error_message);
                 }
             })
     }

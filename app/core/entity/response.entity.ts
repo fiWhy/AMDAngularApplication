@@ -1,12 +1,13 @@
-export interface IResponseEntity {
-    meta;
+import {IMetaEntity, MetaEntity} from './meta.entity.ts';
+
+export interface IResponseEntity<T> {
+    meta: IMetaEntity;
+    data: T;
 }
 
-export class ResponseEntity
-    implements IResponseEntity {
-    meta = {};
-    constructor(code: number, error_message: string) {
-        this.meta.code = code;
-        this.meta.error_message = error_message;
+export class ResponseEntity<T>
+    implements IResponseEntity<T> {
+        constructor(public meta: IMetaEntity, public data: T) {
+            
+        }
     }
-}

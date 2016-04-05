@@ -58,9 +58,12 @@ class AuthorizeService
     login(data): ng.IPromise<IFullResponseEntity> {
         var user = this.AuthorizeResource.login(data);
         user.then((response) => {
-            if (response.meta.code == 200) {
+            console.log(response);
+            if (response.status == 200) {
                 this.authorize(response.data.userData, response.data.tokenData);
             }
+        }, (error) => {
+            console.log('error');
         })
         return user;
     }

@@ -18,4 +18,6 @@ export class MenuService
 }
 
 
-export default angular.module('app.core.services.menu', []);
+export default angular.module('app.core.services.menu', [])
+    .service('MenuResource', MenuResource)
+    .service('MenuService', MenuService);
