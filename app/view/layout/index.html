@@ -25,27 +25,12 @@
     <script src="../node_modules/typescript/lib/typescript.js"></script>
     <script src="system.config.js"></script>
 
-
-    <!-- bower:js -->
-    <!-- endbower -->
-
-    <!-- inject:js -->
-    <!-- endinject -->
-
-    <script>
-        System.import('app.ts')
-            .then(null, console.error.bind(console));
-    </script>
-
-
-    <!--<script data-main="require.config" src="../node_modules/requirejs/require.js"></script>-->
-
-
     <!-- bower:css -->
     <!-- endbower -->
 
     <!-- inject:css -->
     <!-- endinject -->
+
 
     <!--[if lt IE 9]>
 <script src="../assets/js/ie8-responsive-file-warning.js"></script>
@@ -75,6 +60,19 @@
     <div data-ng-include="application.isAuthorized?'./view/layout/footer.html':''"></div>
 
 
+
+        <!-- bower:js -->
+        <!-- endbower -->
+
+        <!-- inject:js -->
+        <!-- endinject -->
+
+
+
+        <script>
+            System.import('app.ts')
+                .then(null, console.error.bind(console));
+        </script>
 
 </body>
 

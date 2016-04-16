@@ -25,38 +25,6 @@
     <script src="../node_modules/typescript/lib/typescript.js"></script>
     <script src="system.config.js"></script>
 
-
-    <!-- bower:js -->
-    <script src="lib/jquery/dist/jquery.js"></script>
-    <script src="lib/prism/prism.js"></script>
-    <script src="lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
-    <script src="lib/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    <script src="lib/Materialize/bin/materialize.js"></script>
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-animate/angular-animate.js"></script>
-    <script src="lib/angular-aria/angular-aria.js"></script>
-    <script src="lib/angular-messages/angular-messages.js"></script>
-    <script src="lib/angular-material/angular-material.js"></script>
-    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="lib/angular-resource/angular-resource.js"></script>
-    <script src="lib/angular-mocks/angular-mocks.js"></script>
-    <script src="lib/angular-cookies/angular-cookies.js"></script>
-    <script src="lib/sweetalert/dist/sweetalert.min.js"></script>
-    <!-- endbower -->
-
-    <!-- inject:js -->
-    <script src="/app/scripts/js/plugins.js"></script>
-    <!-- endinject -->
-
-    <script>
-        System.import('app.ts')
-            .then(null, console.error.bind(console));
-    </script>
-
-
-    <!--<script data-main="require.config" src="../node_modules/requirejs/require.js"></script>-->
-
-
     <!-- bower:css -->
     <link rel="stylesheet" href="lib/prism/themes/prism.css" />
     <link rel="stylesheet" href="lib/perfect-scrollbar/css/perfect-scrollbar.css" />
@@ -66,10 +34,12 @@
     <!-- endbower -->
 
     <!-- inject:css -->
+    <link rel="stylesheet" href="/app/styles/css/materialize.css">
     <link rel="stylesheet" href="/app/styles/css/mystyle.css">
     <link rel="stylesheet" href="/app/styles/css/style.css">
     <link rel="stylesheet" href="/app/styles/css/layout/style-fullscreen.css">
     <!-- endinject -->
+
 
     <!--[if lt IE 9]>
 <script src="../assets/js/ie8-responsive-file-warning.js"></script>
@@ -99,6 +69,35 @@
     <div data-ng-include="application.isAuthorized?'./view/layout/footer.html':''"></div>
 
 
+
+        <!-- bower:js -->
+        <script src="lib/jquery/dist/jquery.js"></script>
+        <script src="lib/prism/prism.js"></script>
+        <script src="lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+        <script src="lib/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+        <script src="lib/Materialize/bin/materialize.js"></script>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular-animate/angular-animate.js"></script>
+        <script src="lib/angular-aria/angular-aria.js"></script>
+        <script src="lib/angular-messages/angular-messages.js"></script>
+        <script src="lib/angular-material/angular-material.js"></script>
+        <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="lib/angular-resource/angular-resource.js"></script>
+        <script src="lib/angular-mocks/angular-mocks.js"></script>
+        <script src="lib/angular-cookies/angular-cookies.js"></script>
+        <script src="lib/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- endbower -->
+
+        <!-- inject:js -->
+        <script src="/app/scripts/js/plugins.js"></script>
+        <!-- endinject -->
+
+
+
+        <script>
+            System.import('app.ts')
+                .then(null, console.error.bind(console));
+        </script>
 
 </body>
 
