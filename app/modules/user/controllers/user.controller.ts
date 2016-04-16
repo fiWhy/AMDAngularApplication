@@ -21,13 +21,7 @@ export class UserController
     login() {
         this.UserService.login(this.loginData)
             .then((response) => {
-                if (response.status == 200) {
                     this.$state.go('dashboard');
-                } else {
-                    this.SweetAlertService.setOptions({
-                        type: 'error'
-                    }).showAlert('Error!', response.data.error_message);
-                }
             });
     }
 

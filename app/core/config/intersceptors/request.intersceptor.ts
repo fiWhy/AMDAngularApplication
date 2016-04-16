@@ -1,4 +1,5 @@
 export class RequestInterceptor {
+    static $inject = ['$cookies'];
     constructor(private $cookies: ng.cookies.ICookiesService) {
         this.request = (config) => {
             var date = new Date();

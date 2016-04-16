@@ -3,11 +3,12 @@ import {AuthorizeResource} from './resources/authorize.resource.ts';
 import {IFullResponseEntity} from 'core/entity/fullresponse.entity.ts';
 import {IUserEntity} from 'core/entity/user.entity.ts';
 import {ITokenEntity} from 'core/entity/token.entity.ts';
+import {IToastAlertService} from 'core/services/alert/alerts/toast.alert.service.ts';
 
 /**
  * MockBackend
  */
-import {mock} from './mock/authorize.mock.ts';
+// import {mock} from './mock/authorize.mock.ts';
 
 export interface IAuthorizeService {
     isLoggedIn(): boolean;
@@ -20,12 +21,12 @@ export interface IAuthorizeService {
 
 class AuthorizeService
     implements AuthorizeService {
-    static $inject: string[] = ['AuthorizeResource', '$cookies', 'config', '$http'];
+    static $inject: string[] = ['AuthorizeResource', '$cookies', 'config', 'ToastAlertService'];
 
     constructor(private AuthorizeResource,
         private $cookies: ng.cookies.ICookiesService,
         private config,
-        private $http) {
+        private ToastAlertService: IToastAlertService) {
 
     }
 
@@ -58,12 +59,9 @@ class AuthorizeService
     login(data): ng.IPromise<IFullResponseEntity> {
         var user = this.AuthorizeResource.login(data);
         user.then((response) => {
-            console.log(response);
-            if (response.status == 200) {
-                this.authorize(response.data.userData, response.data.tokenData);
-            }
+                this.authorize(response.userData, response.tokenData);
         }, (error) => {
-            console.log('error');
+           this.ToastAlertService.showSimpleAlert(error.data.error_message);
         })
         return user;
     }
@@ -76,7 +74,6 @@ class AuthorizeService
 
 
 angular.module('app.core.services.authorize', [])
-    .run(mock)
     .config(authorizeConfig)
     .service('AuthorizeResource', AuthorizeResource)
     .service('AuthorizeService', AuthorizeService);
