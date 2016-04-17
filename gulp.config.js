@@ -1,23 +1,35 @@
 function options() {
-    var app = './app/',
-        src = './src/',
+    var dev = './dev/',
+        app = './app/',
         node = './node_modules/';
     return {
+        dev: dev,
         app: app,
-        src: src,
 
         sass: {
             allSass: [
-                app + 'styles/css/materialize/sass/materialize.scss',
+                dev + 'styles/css/materialize/sass/materialize.scss',
             ],
             buildFiles: app + 'styles/css/'
         },
-        ts: app + '**/*.ts',
+        resources: {
+            images: dev + 'images/*',
+            other: [
+                dev + '**/*.js',
+                dev + '**/*.css',
+                '!' + dev + 'lib/**/*',
+            ]
+        },
+        
+        ts: [
+            dev + '**/*.ts',
+            dev + '*.ts'
+        ],
 
         html: [
-            app + '**/*.html',
-            '!' + app + '/view/layout/index.html',
-            app + 'view/**/*.html',
+            dev + '**/*.html',
+            '!' + dev + '/view/layout/index.html',
+            dev + 'view/**/*.html',
         ],
 
         inject: [
