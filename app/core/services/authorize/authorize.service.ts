@@ -37,7 +37,9 @@ class AuthorizeService
     }
 
     checkIsTokenExpired(): boolean {
-        return false;
+        var currentDate = new Date(),
+            expireTime = parseInt(this.$cookies.get('tokenExpireTime'));
+        return (currentDate.getTime()/1000) >= expireTime;
     }
 
     isLoggedIn(): boolean {

@@ -6,7 +6,9 @@ export interface ITokenEntity {
 
 export class TokenEntity
     implements ITokenEntity {
-    constructor(public access_token: string, public tokenExpireTime: number, public tokenIsExpired: boolean) {
-        
+    constructor(public access_token: string,
+        public tokenExpireTime: number,
+        public tokenIsExpired: boolean) {
+
     }
 }

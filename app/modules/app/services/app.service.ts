@@ -1,7 +1,7 @@
 import {IAuthorizeService} from '../../core/services/authorize/authorize.service.ts';
 
 export interface IAppService {
-    ceckForAuth(): void;
+    ceckForAuth(): boolean;
 }
 
 export class AppService
@@ -9,12 +9,13 @@ export class AppService
     public static $inject = ['AuthorizeService'];
     constructor(private AuthorizeService: IAuthorizeService) {
     }
-    
+
     checkForAuth(): boolean {
-        return this.AuthorizeService.isLoggedIn();
+        return (this.AuthorizeService.isLoggedIn()
+            && !this.AuthorizeService.checkIsTokenExpired());
     }
-    
+
     private redirectToLogin(): void {
-        
+
     }
 }
