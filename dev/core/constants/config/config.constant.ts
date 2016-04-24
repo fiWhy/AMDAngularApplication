@@ -7,6 +7,7 @@ export function ConfigConstant() {
         mainPaths: {
             menu: apiUrl + 'menu/:name',
             authorize: apiUrl + 'auth',
+            cars: apiUrl + 'cars/:id',
             // authorize: 'google.com.ua'
         },
         language: 'en',

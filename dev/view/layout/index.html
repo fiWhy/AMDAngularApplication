@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -17,6 +17,7 @@
     <meta name="msapplication-TileImage" content="resources/images/favicon/mstile-144x144.png">
     <!-- For Windows Phone -->
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAZnaZBXLqNBRXjd-82km_NO7GUItyKek"></script>
 
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
@@ -43,21 +44,21 @@
 <![endif]-->
 </head>
 
-<body data-ng-controller="AppController as application">
+<body data-ng-controller="AppController as app">
     <alert></alert>
-    <div data-ng-include="application.returnIfAuthorized('./app/view/layout/header.html')"></div>
+    <div data-ng-if="app.isAuthorized" data-ng-include="'./app/view/layout/header.html'"></div>
     <!-- START MAIN -->
     <div id="main">
         <!-- START WRAPPER -->
         <div class="wrapper">
-            <div data-ng-include="application.returnIfAuthorized('./app/view/elements/sidebar.html');"></div>
+            <div data-ng-if="app.isAuthorized" data-ng-include="'./app/view/elements/sidebar.html'"></div>
             <ui-view></ui-view>
-            <div data-ng-include="application.returnIfAuthorized('./app/view/elements/rightsidebar.html');"></div>
+            <div data-ng-if="app.isAuthorized" data-ng-include="'./app/view/elements/rightsidebar.html'"></div>
         </div>
     </div>
 
 
-    <div data-ng-include="application.returnIfAuthorized('./app/view/layout/footer.html');"></div>
+    <div data-ng-if="app.isAuthorized" data-ng-include="'./app/view/layout/footer.html'"></div>
 
 
 

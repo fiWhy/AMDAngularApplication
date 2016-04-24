@@ -1,7 +1,8 @@
 var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
 var config = require('./gulp.config');
 var tsc = require('gulp-typescript');
+var sass = require('gulp-sass');
+var inject = require('gulp-inject');
 var browsersync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 var port = 80;
@@ -14,7 +15,7 @@ gulp.task('default', ['watching'], function () {
         proxy: url,
         port: port + 1,
         files: [
-            config.app + '**/*.*',
+            config.app + '**/*',
         ],
         ghostMode: {
             clicks: true,
@@ -25,7 +26,7 @@ gulp.task('default', ['watching'], function () {
         injectChanges: true,
         logFileChanges: true,
         logLevel: 'debug',
-        logPrefix: 'gulp-patterns',
+        logPrefix: 'Admin Application',
         notify: true,
         reloadDelay: 500
     };
@@ -70,7 +71,7 @@ gulp.task('ts-compile', function () {
 
 gulp.task('sass-compile', function () {
     return gulp.src(config.sass.allSass)
-        .pipe($.sass())
+        .pipe(sass())
         .pipe(gulp.dest(config.sass.buildFiles));
 });
 
@@ -79,16 +80,16 @@ gulp.task('index-compile', function () {
     return gulp.src(config.dev + 'view/layout/index.html')
         .pipe(wiredep({
             fileTypes: {
-                fileExtension: {
+                html: {
                     replace: {
                         js: '<script src="dev{{filePath}}"></script>',
                         css: '<link rel="stylesheet" href="dev{{filePath}}">',
                     }
                 }
             },
-            bowerJson: bower,
-            ignorePath: '../..'
+            ignorePath: '../..',
+            bowerjson: bower
         }))
-        .pipe($.inject(gulp.src(config.inject)))
+        .pipe(inject(gulp.src(config.inject)))
         .pipe(gulp.dest('./'));
 });

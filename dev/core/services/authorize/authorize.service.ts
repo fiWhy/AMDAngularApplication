@@ -24,12 +24,13 @@ export interface IAuthorizeService {
 
 class AuthorizeService
     implements AuthorizeService {
-    static $inject: string[] = ['AuthorizeResource', '$cookies', 'config', 'ToastAlertService'];
+    static $inject: string[] = ['AuthorizeResource', '$cookies', 'config', 'ToastAlertService', '$q'];
 
     constructor(private AuthorizeResource,
         private $cookies: ng.cookies.ICookiesService,
         private config,
-        private ToastAlertService: IToastAlertService) {
+        private ToastAlertService: IToastAlertService,
+        private $q: ng.IQService) {
 
     }
 
@@ -63,7 +64,11 @@ class AuthorizeService
     login(data): ng.IPromise<IAuthorizeEntity> {
         var user = this.AuthorizeResource.login(data);
         user.then((response) => {
+            if (response.userData && response.tokenData !== null) {
                 this.authorize(response.userData, response.tokenData);
+            } else {
+                return this.$q.reject();
+            }
         }, (error) => {
            this.ToastAlertService.showSimpleAlert(error.data.error_message);
         })

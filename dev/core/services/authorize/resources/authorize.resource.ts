@@ -1,5 +1,5 @@
-import {IUserEntity, UserEntity} from '../../../entity/user.entity.ts';
-import {IAuthorizeEntity, AuthorizeEntity} from '../entity/authorize.entity.ts';
+import {IUserEntity, UserEntity} from '../../../entity/user.entity';
+import {IAuthorizeEntity, AuthorizeEntity} from '../entity/authorize.entity';
 
 interface IAuthorizeAccessResource {
     login(data: { username: string, password: string }): ng.IPromise<IAuthorizeEntity>;

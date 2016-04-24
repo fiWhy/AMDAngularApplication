@@ -1,18 +1,22 @@
+import {IUserEntity} from '../../../core/entity/user.entity';
+import {IAuthorizeService} from '../../../core/services/authorize/authorize.service';
+
 export interface IAppController {
     isAuthorized: boolean;
-    returnIfAuthorized(value);
 }
 
 export class AppController
     implements IAppController {
-    static $inject = ['$rootScope', 'AppService', 'MenuService', '$state', '$location'];
+    static $inject = ['$rootScope', 'AppService', 'MenuService', '$state', '$location', 'AuthorizeService'];
     isAuthorized: boolean;
     constructor(private $rootScope: ng.IRootScopeService,
         private AppService,
         private MenuService,
         private $state: ng.ui.IStateService,
-        private $location: ng.ILocationService) {
+        private $location: ng.ILocationService,
+        private AuthorizeService: IAuthorizeService) {
         var self = this;
+
         
         $rootScope.$on('$stateChangeStart', function(event, toState) {
             self.isAuthorized = AppService.checkForAuth();
@@ -26,13 +30,9 @@ export class AppController
                 }
             }
         });
-        
-
     }
-    
-    returnIfAuthorized(returnValue){
-        if(this.isAuthorized)
-            return returnValue;
-        return false;
+
+    public getUser(): IUserEntity {
+        return this.AuthorizeService.getCurrentUser();
     }
 }

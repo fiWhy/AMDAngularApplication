@@ -27,15 +27,15 @@ function options() {
         ],
 
         html: [
-            dev + '**/*.html',
             '!' + dev + '/view/layout/index.html',
+            dev + '**/*.html',
             dev + 'view/**/*.html',
         ],
 
         inject: [
             app + 'styles/css/**/*.css',
             app + 'scripts/js/**/*.js',
-            app + 'scripts/scripts.*'
+            app + 'scripts/scripts.*',
             // src + 'scripts/*.js',
         ]
     }
