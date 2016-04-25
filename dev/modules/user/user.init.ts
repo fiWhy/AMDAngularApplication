@@ -1,8 +1,10 @@
 import {userConfig} from './config/bootstrap';
 import {UserController} from './controllers/user.controller';
-import {UserService} from './services/user.service';
+import {UserServiceImplementation} from './services/user.service';
+import {UserServiceProvider} from './provider/user.service.provider';
 
 angular.module('app.modules.user', [])
-    .config(userConfig)
-    .service('UserService', UserService)
-    .controller('UserController', UserController);
+    .service('UserServiceImplementation', UserServiceImplementation)
+    .provider('UserService', UserServiceProvider)
+    .controller('UserController', UserController)
+    .config(userConfig);

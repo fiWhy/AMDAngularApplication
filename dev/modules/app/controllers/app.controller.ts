@@ -1,5 +1,6 @@
 import {IUserEntity} from '../../../core/entity/user.entity';
 import {IAuthorizeService} from '../../../core/services/authorize/authorize.service';
+import {IAppServiceImplementation} from '../services/app.service';
 
 export interface IAppController {
     isAuthorized: boolean;
@@ -7,16 +8,14 @@ export interface IAppController {
 
 export class AppController
     implements IAppController {
-    static $inject = ['$rootScope', 'AppService', 'MenuService', '$state', '$location', 'AuthorizeService'];
+    static $inject = ['$rootScope', 'AppService', '$state', '$location', 'AuthorizeService'];
     isAuthorized: boolean;
     constructor(private $rootScope: ng.IRootScopeService,
-        private AppService,
-        private MenuService,
+        private AppService: IAppServiceImplementation,
         private $state: ng.ui.IStateService,
         private $location: ng.ILocationService,
         private AuthorizeService: IAuthorizeService) {
         var self = this;
-
         
         $rootScope.$on('$stateChangeStart', function(event, toState) {
             self.isAuthorized = AppService.checkForAuth();

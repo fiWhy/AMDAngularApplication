@@ -1,5 +1,5 @@
 export class DropdownDirective {
-    restrict: 'EAC';
+    restrict: string =  'EAC';
     link(scope, element, attrs) {
         // Materialize Dropdown
         var constrain_width = true,

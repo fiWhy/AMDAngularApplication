@@ -4,7 +4,6 @@ import {IAuthorizeEntity} from './entity/authorize.entity';
 import {IUserEntity} from '../../entity/user.entity';
 import {ITokenEntity} from './entity/token.entity';
 import {IToastAlertService} from '../alert/alerts/toast.alert.service';
-import {AuthorizeResourceFactory} from './resources/authorize.resource.factory';
 
 /**
  * MockBackend
@@ -61,8 +60,8 @@ class AuthorizeService
         this.$cookies.remove('user');
     }
 
-    login(data): ng.IPromise<IAuthorizeEntity> {
-        var user = this.AuthorizeResource.login(data);
+    login(data): ng.resource.IResource<IAuthorizeEntity> {
+        var user = this.AuthorizeResource.login(data).$promise;
         user.then((response) => {
             if (response.userData && response.tokenData !== null) {
                 this.authorize(response.userData, response.tokenData);
@@ -75,8 +74,8 @@ class AuthorizeService
         return user;
     }
     
-    reset(data): ng.IPromise<IUserEntity> {
-        return this.AuthorizeResource.reset(data);
+    reset(data): ng.resource.IResource<IUserEntity> {
+        return this.AuthorizeResource.reset(data).$promise;
     }
 
 }

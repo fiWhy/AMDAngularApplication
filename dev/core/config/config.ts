@@ -5,17 +5,18 @@ angular.module('app.core.config', [])
     .service('RequestIntersceptor',  RequestInterceptor)
     .run(configMockRoutes)
     .config(config)
-    .config(httpConfig);
+    .config(httpConfig)
+    .config(menuConfig);
 
 config.$inject = ['$locationProvider', '$mdThemingProvider'];
 export function config($locationProvider, $mdThemingProvider) {
-    // $mdThemingProvider.theme('default')
-    //     .primaryPalette('light-blue')
-    //     .accentPalette('blue');
-    // $locationProvider.html5Mode({
-    //     enabled: false,
-    //     requireBase: false
-    // });
+     //$mdThemingProvider.theme('default')
+     //    .primaryPalette('red')
+     //    .accentPalette('red');
+     //$locationProvider.html5Mode({
+     //    enabled: false,
+     //    requireBase: false
+     //});
 }
 
 function configMockRoutes() {
@@ -26,4 +27,10 @@ httpConfig.$inject = ['$httpProvider'];
 function httpConfig($httpProvider: ng.IHttpProvider) {
     $httpProvider.interceptors.push('ResponseIntersceptor');
     $httpProvider.interceptors.push('RequestIntersceptor');
+}
+
+menuConfig.$inject = ['MenuDirectiveServiceProvider'];
+function menuConfig(MenuDirectiveServiceProvider) {
+    MenuDirectiveServiceProvider.setMenuItem('Dashboard', 'view_headline', 'dashboard');
+    MenuDirectiveServiceProvider.setMenuItem('Cars', 'view_headline', 'cars.index');
 }

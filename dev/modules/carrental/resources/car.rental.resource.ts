@@ -11,10 +11,11 @@ export interface ICarRentalAccess
     post;
 }
 
-export class CarRentalResource {
+export class CarRentalResource
+    implements ICarRentalAccessResource {
     public static $inject = ['$resource', 'config'];
     constructor($resource: ng.resource.IResourceService, config) {
-        return $resource(config.mainPaths.cars, {}, {
+        return <ICarRentalAccess> $resource(config.mainPaths.cars, {}, {
             'patch': {
                 method: 'PATCH'
             },

@@ -1,8 +1,8 @@
-interface IDashboardService {
+export interface IDashboardServiceImplementation {
 
 }
 
-export class DashboardService
-    implements IDashboardService {
+export class DashboardServiceImplementation
+    implements IDashboardServiceImplementation {
 
 }

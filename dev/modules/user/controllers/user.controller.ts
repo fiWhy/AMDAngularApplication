@@ -1,4 +1,4 @@
-import {IUserService} from '../services/user.service';
+import {IUserServiceImplementation} from '../services/user.service';
 import {IToastAlertService} from '../../../core/services/alert/alerts/toast.alert.service';
 import {ISweetAlertService} from '../../../core/services/alert/alerts/sweet.alert.service';
 
@@ -12,7 +12,7 @@ export class UserController
     static $inject = ['UserService', 'ToastAlertService', 'SweetAlertService', '$state'];
     loginData: {};
     resetData: {};
-    constructor(private UserService: IUserService,
+    constructor(private UserService: IUserServiceImplementation,
         private ToastAlertService: IToastAlertService,
         private SweetAlertService: ISweetAlertService,
         private $state: ng.ui.IStateService) {
@@ -28,6 +28,7 @@ export class UserController
     logout() {
         this.UserService.logout();
         this.$state.go('user.login');
+
     }
 
     reset() {
