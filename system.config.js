@@ -1,5 +1,5 @@
 System.config({
-    defaultJSExtensions: false,
+    defaultJSExtensions: true,
     typescriptOptions: { emitDecoratorMetadata: true },
     paths: {
         'systemjs': '../node_modules/systemjs/dist/system.js',

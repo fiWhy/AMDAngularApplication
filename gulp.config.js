@@ -13,7 +13,7 @@ function options() {
             buildFiles: app + 'styles/css/'
         },
         resources: {
-            images: dev + 'images/*',
+            images: dev + 'images/**',
             other: [
                 dev + '**/*.js',
                 dev + '**/*.css',

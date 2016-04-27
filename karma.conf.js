@@ -19,37 +19,18 @@ module.exports = function(config) {
         systemjs: {
             configFile: 'app/system.config.js',
             serveFiles: [
-                'app/**/*.ts',
-                'node_modules/angular-mocks/angular-mocks.js',
-                'node_modules/angular-ui-router/release/angular-ui-router.js',
-                'node_modules/angular-animate/angular-animate.js',
-                'node_modules/angular-resource/angular-resource.js',
-                'node_modules/systemjs/dist/system.js',
-                'node_modules/systemjs/dist/system-polyfills.js',
-                'node_modules/es6-module-loader/dist/es6-module-loader.js',
-                'node_modules/typescript/lib/typescript.js'
+                'app/**/**',
+                'dev/lib/**/*',
             ],
-            // includeFiles: [
-            //     'angular'
-            // ],
-            // meta: {
-            //     'node_modules/angular-ui-router/release/angular-ui-router.js': {
-            //         format: 'global', // load this module as a global
-            //         deps: [
-            //             'angular'
-            //         ]
-            //     }
-            // },
             config: {
-                transpiler: 'typescript',
+                transpiler: null,
                 paths: {
-                    'angular': 'node_modules/angular/angular.js',
-                    'angular-mocks': 'node_modules/angular-mocks/angular-mocks.js',
-                    'typescript': 'node_modules/typescript/lib/typescript.js',
-                    "angular-ui-router": "node_modules/angular-ui-router/release/angular-ui-router.js",
-                    "angular-animate": "node_modules/angular-animate/angular-animate.js",
-                    "angular-resource": "node_modules/angular-resource/angular-resource.js",
-                    "loading-bar": "node_modules/angular-loading-bar/build/loading-bar.js",
+                    'angular': 'dev/lib/angular/angular.js',
+                    'angular-mocks': 'dev/lib/angular-mocks/angular-mocks.js',
+                    'typescript': 'dev/lib/typescript/lib/typescript.js',
+                    "angular-ui-router": "dev/lib/angular-ui-router/release/angular-ui-router.js",
+                    "angular-animate": "dev/lib/angular-animate/angular-animate.js",
+                    "angular-resource": "dev/lib/angular-resource/angular-resource.js",
                     'systemjs': 'node_modules/systemjs/dist/system.js',
                     'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
                     'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',

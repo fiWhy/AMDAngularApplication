@@ -35,12 +35,12 @@ gulp.task('default', ['watching'], function () {
 });
 
 gulp.task('watching', ['build'], function() {
-    gulp.watch(config.html, ['html-compile']);
     gulp.watch(config.ts, ['ts-compile']);
     gulp.watch(config.sass.allSass, ['sass-compile']);
+    gulp.watch(config.html, ['html-compile']);
 });
 
-gulp.task('build', ['copy-styles-scripts', 'ts-compile', 'copy-images', 'html-compile']);
+gulp.task('build', ['html-compile']);
 
 gulp.task('watch-html', function () {
     gulp.watch(config.html, ['html-compile']);
@@ -75,7 +75,7 @@ gulp.task('sass-compile', function () {
         .pipe(gulp.dest(config.sass.buildFiles));
 });
 
-gulp.task('index-compile', function () {
+gulp.task('index-compile', ['copy-styles-scripts', 'ts-compile', 'copy-images'], function () {
     var bower = require('./bower.json');
     return gulp.src(config.dev + 'view/layout/index.html')
         .pipe(wiredep({
