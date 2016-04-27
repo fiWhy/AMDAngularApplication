@@ -13,7 +13,7 @@ var wiredep = require('wiredep').stream;
 gulp.task('default', ['watching'], function () {
     var options = {
         proxy: url,
-        port: port + 1,
+        port: 8080,
         files: [
             config.app + '**/*',
         ],

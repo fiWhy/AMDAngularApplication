@@ -3,9 +3,12 @@ import './dashboard/dashboard.init';
 import './user/user.init';
 import './carrental/carrental.init';
 
+import {modules} from './modules.list.config'
+
 angular.module('app.modules', [
-    'app.modules.app',
-    'app.modules.dashboard',
-    'app.modules.user',
-    'app.modules.carrental'
-]);
+    'ngCookies',
+    'ngMaterial',
+    'ngAnimate',
+    'ngResource',
+    'ui.router',
+].concat(modules()));

@@ -8,7 +8,7 @@ angular.module('app.core.config', [])
     .config(httpConfig)
     .config(menuConfig);
 
-config.$inject = ['$locationProvider', '$mdThemingProvider'];
+config.$inject = ['$locationProvider'];
 export function config($locationProvider, $mdThemingProvider) {
      //$mdThemingProvider.theme('default')
      //    .primaryPalette('red')

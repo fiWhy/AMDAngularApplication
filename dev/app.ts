@@ -5,11 +5,6 @@ import './modules/modules.init';
 import './scripts/scripts';
 
 var app = angular.module('app', [
-    'ngCookies',
-    'ngMaterial',
-    'ngAnimate',
-    'ngResource',
-    'ui.router',
     'app.core',
     'app.modules',
 ]);
