@@ -51,6 +51,11 @@ gulp.task('copy-styles-scripts', function () {
         .pipe(gulp.dest(config.app));
 })
 
+gulp.task('copy-translations', function() {
+    return gulp.src(config.resources.translations)
+        .pipe(gulp.dest(config.app));
+});
+
 gulp.task('copy-images', function () {
     return gulp.src(config.resources.images)
         .pipe(gulp.dest(config.app + 'images'));
@@ -61,7 +66,7 @@ gulp.task('html-compile', ['index-compile'], function () {
         .pipe(gulp.dest(config.app));
 });
 
-gulp.task('ts-compile', function () {
+gulp.task('ts-compile', ['copy-translations'], function () {
     var tsProject = tsc.createProject(require('./tsconfig.json'));
     var prepare = gulp.src(config.ts)
         .pipe(tsc(tsProject));

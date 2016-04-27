@@ -14,6 +14,7 @@ function options() {
         },
         resources: {
             images: dev + 'images/**',
+            translations: dev + '**/locale-*.json',
             other: [
                 dev + '**/*.js',
                 dev + '**/*.css',

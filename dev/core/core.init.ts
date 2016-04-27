@@ -11,6 +11,7 @@ angular.module('app.core', [
     'ngAnimate',
     'ngResource',
     'ui.router',
+    'pascalprecht.translate',
     
     'app.core.constants',
     'app.core.directives',

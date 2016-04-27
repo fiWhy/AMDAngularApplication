@@ -6,7 +6,8 @@ angular.module('app.core.config', [])
     .run(configMockRoutes)
     .config(config)
     .config(httpConfig)
-    .config(menuConfig);
+    .config(menuConfig)
+    .config(languageConfig);
 
 config.$inject = ['$locationProvider'];
 export function config($locationProvider, $mdThemingProvider) {
@@ -27,6 +28,11 @@ httpConfig.$inject = ['$httpProvider'];
 function httpConfig($httpProvider: ng.IHttpProvider) {
     $httpProvider.interceptors.push('ResponseIntersceptor');
     $httpProvider.interceptors.push('RequestIntersceptor');
+}
+
+languageConfig.$inject = ['$translateProvider'];
+function languageConfig($translateProvider) {
+  $translateProvider.preferredLanguage('en');
 }
 
 menuConfig.$inject = ['MenuDirectiveServiceProvider'];

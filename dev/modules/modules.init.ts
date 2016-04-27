@@ -11,4 +11,5 @@ angular.module('app.modules', [
     'ngAnimate',
     'ngResource',
     'ui.router',
+    'pascalprecht.translate'
 ].concat(modules()));

@@ -11,25 +11,25 @@
                 <div class="input-field col s12">
                     <i class="mdi-social-person-outline prefix"></i>
                     <input required id="username" data-ng-model="user.loginData.username" type="text">
-                    <label for="username" class="center-align">Username</label>
+                    <label for="username" class="center-align">{{ 'LOGIN_FORM.USERNAME_PLACEHOLDER'| translate }}</label>
                 </div>
             </div>
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="mdi-action-lock-outline prefix"></i>
                     <input required id="password"  data-ng-model="user.loginData.password" type="password">
-                    <label for="password">Password</label>
+                    <label for="password">{{ 'LOGIN_FORM.PASSWORD_PLACEHOLDER'| translate }}</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m12 l12  login-text">
                     <input type="checkbox"  data-ng-model="user.loginData.remember" id="remember-me" />
-                    <label for="remember-me">Remember me</label>
+                    <label for="remember-me">{{ 'LOGIN_FORM.REMEMBER'| translate }}</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <button type="submit" class="btn waves-effect waves-light col s12">Login</button>
+                    <button type="submit" class="btn waves-effect waves-light col s12">{{ 'LOGIN_FORM.LOGIN'| translate }}</button>
                 </div>
             </div>
             <div class="row">
@@ -37,7 +37,7 @@
                     <p class="margin medium-small"><a href="page-register.html">Register Now!</a></p>
                 </div>-->
                 <div class="input-field col s6 m6 l6">
-                    <p class="margin right-align medium-small"><a ui-sref="user.reset">Forgot password ?</a></p>
+                    <p class="margin right-align medium-small"><a ui-sref="user.reset">{{ 'LOGIN_FORM.FORGOT'| translate }}</a></p>
                 </div>
             </div>
 

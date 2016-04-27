@@ -1,8 +1,13 @@
-userConfig.$inject = ['$stateProvider'];
-export function userConfig($stateProvider) {
+userConfig.$inject = ['$stateProvider', '$translateProvider', 'config'];
+export function userConfig($stateProvider, $translateProvider, config) {
+    $translateProvider.useStaticFilesLoader({
+        prefix: config.documentRoot + '/modules/user/translate/locale-',
+        suffix: '.json'
+    });
+
     $stateProvider
         .state('user', {
-            abscract:true,
+            abscract: true,
             template: "<ui-view></ui-view>"
         })
         .state('user.login', {
