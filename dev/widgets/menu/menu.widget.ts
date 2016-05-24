@@ -23,6 +23,6 @@ export class MenuWidget
 
 
 export default angular.module('app.widgets.menu', [])
-    .service('MenuDirectiveServiceImplementation', MenuWidgetServiceImplementation)
-    .provider('MenuDirectiveService', MenuWidgetServiceProvider)
+    .service('MenuWidgetServiceImplementation', MenuWidgetServiceImplementation)
+    .provider('MenuWidgetService', MenuWidgetServiceProvider)
     .directive('menuWidget', (config) => new MenuWidget(config));

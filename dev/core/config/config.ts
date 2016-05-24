@@ -35,8 +35,8 @@ function languageConfig($translateProvider) {
   $translateProvider.preferredLanguage('en');
 }
 
-menuConfig.$inject = ['MenuDirectiveServiceProvider'];
-function menuConfig(MenuDirectiveServiceProvider) {
-    MenuDirectiveServiceProvider.setMenuItem('Dashboard', 'view_headline', 'dashboard');
-    MenuDirectiveServiceProvider.setMenuItem('Cars', 'view_headline', 'cars.index');
+menuConfig.$inject = ['MenuWidgetServiceProvider'];
+function menuConfig(MenuWidgetServiceProvider) {
+    MenuWidgetServiceProvider.setMenuItem('Dashboard', 'view_headline', 'dashboard');
+    MenuWidgetServiceProvider.setMenuItem('Cars', 'view_headline', 'cars.index');
 }
