@@ -2,7 +2,7 @@ import {ResponseIntersceptor} from './intersceptors/response.intersceptor';
 import {RequestInterceptor} from './intersceptors/request.intersceptor';
 angular.module('app.core.config', [])
     .service('ResponseIntersceptor', ResponseIntersceptor)
-    .service('RequestIntersceptor',  RequestInterceptor)
+    .service('RequestIntersceptor', RequestInterceptor)
     .run(configMockRoutes)
     .config(config)
     .config(httpConfig)
@@ -11,13 +11,13 @@ angular.module('app.core.config', [])
 
 config.$inject = ['$locationProvider'];
 export function config($locationProvider, $mdThemingProvider) {
-     //$mdThemingProvider.theme('default')
-     //    .primaryPalette('red')
-     //    .accentPalette('red');
-     //$locationProvider.html5Mode({
-     //    enabled: false,
-     //    requireBase: false
-     //});
+    //$mdThemingProvider.theme('default')
+    //    .primaryPalette('red')
+    //    .accentPalette('red');
+    //$locationProvider.html5Mode({
+    //    enabled: false,
+    //    requireBase: false
+    //});
 }
 
 function configMockRoutes() {
@@ -32,7 +32,7 @@ function httpConfig($httpProvider: ng.IHttpProvider) {
 
 languageConfig.$inject = ['$translateProvider'];
 function languageConfig($translateProvider) {
-  $translateProvider.preferredLanguage('en');
+    $translateProvider.preferredLanguage('ru');
 }
 
 menuConfig.$inject = ['MenuDirectiveServiceProvider'];
