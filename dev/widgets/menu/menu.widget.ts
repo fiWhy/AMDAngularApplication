@@ -13,16 +13,16 @@ export class MenuWidget
     public static $inject = ['config'];
     public restrict = 'E';
     public controller = MenuWidgetController;
-    public controllerAs = 'menuDirective';
+    public controllerAs = 'menuWidget';
     public templateUrl: string;
 
     constructor(config) {
-        this.templateUrl = config.documentRoot + '/core/directives/menu/templates/menu.template.html';
+        this.templateUrl = config.documentRoot + '/widgets/menu/templates/menu.template.html';
     }
 }
 
 
-export default angular.module('app.core.directives.menu', [])
+export default angular.module('app.widgets.menu', [])
     .service('MenuDirectiveServiceImplementation', MenuWidgetServiceImplementation)
     .provider('MenuDirectiveService', MenuWidgetServiceProvider)
     .directive('menuWidget', (config) => new MenuWidget(config));

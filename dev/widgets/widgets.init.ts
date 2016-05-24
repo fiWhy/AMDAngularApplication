@@ -1,1 +1,5 @@
-angular.module('app.widgets', []);
+import './menu/menu.widget';
+
+angular.module('app.widgets', [
+    'app.core.directives.menu'
+]);
