@@ -6,13 +6,6 @@ import './config/config';
 
 
 angular.module('app.core', [
-    'ngCookies',
-    'ngMaterial',
-    'ngAnimate',
-    'ngResource',
-    'ui.router',
-    'pascalprecht.translate',
-    
     'app.core.constants',
     'app.core.directives',
     'app.core.services',
