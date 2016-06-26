@@ -1,6 +1,8 @@
 export class ResponseIntersceptor {
     static $inject = ['$q'];
-    constructor(private $q: ng.IQService) {
+    constructor(
+        private $q: ng.IQService
+    ) {
         this.responseError = (response) => {
             return $q.reject(response);
         }

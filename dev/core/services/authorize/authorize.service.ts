@@ -4,6 +4,7 @@ import {IAuthorizeEntity} from './entity/authorize.entity';
 import {IUserEntity} from '../../entity/user.entity';
 import {ITokenEntity} from './entity/token.entity';
 import {IToastAlertService} from '../alert/alerts/toast.alert.service';
+import {ISingleResponse} from "../../entity/r.entity";
 
 /**
  * MockBackend
@@ -13,16 +14,16 @@ import {IToastAlertService} from '../alert/alerts/toast.alert.service';
 export interface IAuthorizeService {
     isLoggedIn(): boolean;
     checkIsTokenExpired(): boolean;
-    getCurrentUser(): IUserEntity;
+    getCurrentUser(): string;
     logout(): void;
-    login(data): ng.IPromise<IAuthorizeEntity>;
-    reset(data): ng.IPromise<IUserEntity>;
+    login(data): ng.IPromise<ISingleResponse<IAuthorizeEntity>>;
+    reset(data): ng.IPromise<ISingleResponse<IUserEntity>>;
 }
 
 
 
 class AuthorizeService
-    implements AuthorizeService {
+    implements IAuthorizeService {
     static $inject: string[] = ['AuthorizeResource', '$cookies', 'config', 'ToastAlertService', '$q'];
 
     constructor(private AuthorizeResource,
@@ -33,25 +34,26 @@ class AuthorizeService
 
     }
 
-    private authorize(userData: IUserEntity, tokenData: ITokenEntity): void {
-        this.$cookies.putObject('token', tokenData);
-        this.$cookies.putObject('user', userData);
+    private authorize(name: string, token: string): void {
+        this.$cookies.put('token', token);
+        this.$cookies.put('user', name);
     }
 
     checkIsTokenExpired(): boolean {
         var currentDate = new Date(),
-            expireTime = parseInt(this.$cookies.getObject('token').tokenExpireTime);
-        return (currentDate.getTime()/1000) >= expireTime;
+            expireTime = this.$cookies.get('token');
+        // return (currentDate.getTime()/1000) >= expireTime;
+        if(!expireTime) return true;
+        return false;
     }
 
     isLoggedIn(): boolean {
-        var tokenObject = this.$cookies.getObject('token');
-        var token =  (tokenObject && tokenObject.access_token);
+        var token = this.$cookies.get('token');
         return token !== undefined;
     }
 
-    getCurrentUser(): IUserEntity {
-        var user = this.$cookies.getObject('user');
+    getCurrentUser(): string {
+        var user = this.$cookies.get('user');
         return user;
     }
 
@@ -60,21 +62,21 @@ class AuthorizeService
         this.$cookies.remove('user');
     }
 
-    login(data): ng.resource.IResource<IAuthorizeEntity> {
+    login(data): ng.IPromise<ISingleResponse<IAuthorizeEntity>> {
         var user = this.AuthorizeResource.login(data).$promise;
         user.then((response) => {
-            if (response.userData && response.tokenData !== null) {
-                this.authorize(response.userData, response.tokenData);
+            if (response.data.name && response.data.token !== null) {
+                this.authorize(response.data.name, response.data.token);
             } else {
                 return this.$q.reject();
             }
         }, (error) => {
-           this.ToastAlertService.showSimpleAlert(error.data.error_message);
-        })
+           this.ToastAlertService.showSimpleAlert(error.data.message);
+        });
         return user;
     }
     
-    reset(data): ng.resource.IResource<IUserEntity> {
+    reset(data): ng.IPromise<ISingleResponse<IUserEntity>> {
         return this.AuthorizeResource.reset(data).$promise;
     }
 

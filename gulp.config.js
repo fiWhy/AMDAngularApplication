@@ -5,6 +5,7 @@ function options() {
     return {
         dev: dev,
         app: app,
+        prefix: 'admin',
 
         sass: {
             allSass: [

@@ -3,10 +3,11 @@ export class RequestInterceptor {
     constructor(private $cookies: ng.cookies.ICookiesService) {
         this.request = (config) => {
             var date = new Date();
-            var token = $cookies.getObject('token');
-            if (token && token.tokenExpireTime < date.getTime())
-                config.headers.Authorization = 'Bearer ' + token.access_token;
-                config.headers['Content-Type'] = 'application/json';
+            var token = $cookies.get('token');
+            if (token) {
+                config.headers.Authorization = 'Bearer ' + token;
+                //config.headers['Content-Type'] = 'application/json';
+            }
                 
             return config;
         }

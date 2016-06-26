@@ -1,6 +1,6 @@
 export interface IToastAlertService {
-    setVertical(position: string): void;
-    setHorizontal(position: string): void;
+    setVertical(position: string): IToastAlertService;
+    setHorizontal(position: string): IToastAlertService;
     showCustomAlert(msg: string, html: string, ctrl, element: HTMLBaseElement, hideDelay?: number): void;
     showSimpleAlert(msg: string, hideDelay?: number): void;
     showActionAlert(msg: string, ctrl): void;
@@ -28,7 +28,7 @@ export class ToastAlertService
         }
     }
 
-    setVertical(position: string): ToastAlertService {
+    setVertical(position: string): IToastAlertService {
         var verticalPositions = ['top', 'bottom'];
         if (verticalPositions.indexOf(position) < 0)
             throw 'Sorry, but your position does not exists. You could choose from: top, bottom!';
@@ -45,7 +45,7 @@ export class ToastAlertService
         return this;
     }
 
-    setHorizontal(position: string): ToastAlertService {
+    setHorizontal(position: string): IToastAlertService {
         var horizontalPositions = ['left', 'right'];
         if (horizontalPositions.indexOf(position) < 0)
             throw 'Sorry, but your position does not exists. You could choose from: left, right!';
@@ -62,7 +62,7 @@ export class ToastAlertService
         return this;
     }
 
-    setAction(actionName: string, actionCallback): ToastAlertService {
+    setAction(actionName: string, actionCallback): IToastAlertService {
         if (!actionCallback)
             throw 'You missed the action callback! Please, provide it!';
         this.action.actionName = actionName;

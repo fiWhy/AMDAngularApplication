@@ -17,7 +17,7 @@ export class AppController
         private AuthorizeService: IAuthorizeService) {
         var self = this;
         
-        $rootScope.$on('$stateChangeStart', function(event, toState) {
+        $rootScope.$on('$stateChangeStart', function (event, toState) {
             self.isAuthorized = AppService.checkForAuth();
             var authLocation = /user\.(login|reset)/.test(toState.name);
             if (self.isAuthorized) {
@@ -31,7 +31,7 @@ export class AppController
         });
     }
 
-    public getUser(): IUserEntity {
+    public getUser(): string {
         return this.AuthorizeService.getCurrentUser();
     }
 }

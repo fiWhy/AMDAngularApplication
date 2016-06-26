@@ -87,14 +87,25 @@ gulp.task('index-compile', ['copy-styles-scripts', 'ts-compile', 'copy-images'],
             fileTypes: {
                 html: {
                     replace: {
-                        js: '<script src="dev{{filePath}}"></script>',
-                        css: '<link rel="stylesheet" href="dev{{filePath}}">',
+                        js: '<script src="' + (config.prefix? '/' + config.prefix: '' ) + '/dev{{filePath}}"></script>',
+                        css: '<link rel="stylesheet" href="' + (config.prefix? '/' + config.prefix: '' ) + '/dev{{filePath}}">'
                     }
                 }
             },
             ignorePath: '../..',
             bowerjson: bower
         }))
-        .pipe(inject(gulp.src(config.inject)))
+        .pipe(inject(gulp.src(config.inject), {
+            transform: function (filepath, file, i, length) {
+                var splitted = filepath.split('.'),
+                        ext = splitted[(splitted.length-1)];
+                switch(ext) {
+                    case 'css':
+                        return '<link rel="stylesheet" href="' + (config.prefix? '/' + config.prefix: '' ) + '/' + filepath + '">';
+                    case 'js':
+                        return '<script src="' + (config.prefix? '/' + config.prefix: '' ) + '/' + filepath + '"></script>'
+                }
+            }
+        }))
         .pipe(gulp.dest('./'));
 });

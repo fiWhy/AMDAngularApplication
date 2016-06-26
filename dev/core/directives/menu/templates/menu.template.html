@@ -33,16 +33,10 @@
                 <i class="medium material-icons">power_settings_new</i> Logout
             </a>
         </li>
-        <li class="bold">
-            <a ui-sref="dashboard" class="waves-effect waves-cyan">
+        <li class="bold" data-ng-repeat="item in menuDirective.menu">
+            <a ui-sref="{{ item.sref }}" class="waves-effect waves-cyan">
                 <i class="mdi-action-dashboard"></i>
-                Dashboard
-            </a>
-        </li>
-        <li class="bold">
-            <a ui-sref="cars.index" class="waves-effect waves-cyan">
-                <i class="mdi-action-dashboard"></i>
-                Cars
+                <span data-ng-bind="item.title"></span>
             </a>
         </li>
     </ul>

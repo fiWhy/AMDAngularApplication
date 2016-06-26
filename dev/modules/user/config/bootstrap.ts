@@ -1,5 +1,5 @@
-userConfig.$inject = ['$stateProvider', '$translateProvider', 'config'];
-export function userConfig($stateProvider, $translateProvider, config) {
+userConfig.$inject = ['$stateProvider', '$translateProvider', 'config', 'MenuDirectiveServiceProvider'];
+export function userConfig($stateProvider, $translateProvider, config, MenuDirectiveServiceProvider) {
     $translateProvider.useStaticFilesLoader({
         prefix: config.documentRoot + '/modules/user/translate/locale-',
         suffix: '.json'
@@ -19,4 +19,7 @@ export function userConfig($stateProvider, $translateProvider, config) {
             controller: 'UserController as user',
             templateUrl: "./app/modules/user/templates/forgot.html"
         });
+        
+
+    MenuDirectiveServiceProvider.setMenuItem('Custom', 'view_headline', 'dashboard');
 };

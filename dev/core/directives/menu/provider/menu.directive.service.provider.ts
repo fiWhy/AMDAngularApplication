@@ -2,6 +2,10 @@
 import {MenuEntity, IMenuEntity} from '../entities/menu.entity';
 import {MenuItemEntity, IMenuItemEntity} from '../entities/menu.item.entity';
 
+export interface IMenuDirectiveServiceProviderInterface {
+    setMenuItem(title: string, icon: string, sref: string);
+}
+
 export class MenuDirectiveServiceProvider
     implements ng.IServiceProvider{
 

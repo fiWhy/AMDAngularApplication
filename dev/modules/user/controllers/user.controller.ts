@@ -21,7 +21,7 @@ export class UserController
     login() {
         this.UserService.login(this.loginData)
             .then((response) => {
-                    this.$state.go('dashboard');
+                this.$state.go('dashboard');
             });
     }
 
