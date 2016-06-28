@@ -6,10 +6,10 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "angularjs/angular.d.ts": {
-      "commit": "08ed4e9f1869e37e29514d862e0158b40e550232"
+      "commit": "3bbe35a4cfdf09bd2a87ed660bf918131679da19"
     },
     "jquery/jquery.d.ts": {
-      "commit": "08ed4e9f1869e37e29514d862e0158b40e550232"
+      "commit": "3bbe35a4cfdf09bd2a87ed660bf918131679da19"
     },
     "angularjs/angular-mocks.d.ts": {
       "commit": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
@@ -31,6 +31,12 @@
     },
     "angular-translate/angular-translate.d.ts": {
       "commit": "08ed4e9f1869e37e29514d862e0158b40e550232"
+    },
+    "underscore/underscore.d.ts": {
+      "commit": "3bbe35a4cfdf09bd2a87ed660bf918131679da19"
+    },
+    "angular-material/angular-material.d.ts": {
+      "commit": "3bbe35a4cfdf09bd2a87ed660bf918131679da19"
     }
   }
 }

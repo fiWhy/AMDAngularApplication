@@ -4,7 +4,12 @@ export interface IMetaEntity {
 }
 
 export interface IPagination {
-
+    count: number;
+    current_page: number;
+    links: any;
+    per_page: number;
+    total: number;
+    total_pages: number;
 }
 
 export interface IResponse<T> {

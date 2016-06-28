@@ -1,6 +1,6 @@
 export interface ISweetAlertService {
     setOptions(options: {}): SweetAlertService;
-    showAlert(title: string, text: string): void;
+    showAlert(callback): void;
 }
 
 export class SweetAlertService
@@ -9,6 +9,7 @@ export class SweetAlertService
     private usableOptions;
     private callBack;
     constructor() {
+        this.usableOptions = {};
         this.sweetAlertOptions = {
            type: "success",   
            showCancelButton: false,   
@@ -26,25 +27,15 @@ export class SweetAlertService
         this.usableOptions = angular.extend({}, this.sweetAlertOptions, options);
         return this;
     }
-    
-    setCommonCallback(fnc): SweetAlertService {
-        this.callBack = fnc;
-        return this;
-    }
 
-    showAlert(title: string, text: string): void {
-        if (title)
-            this.usableOptions.title = title;
-        if (text)
-            this.usableOptions.text = text;
-       swal(this.usableOptions, this.callBack);
-        
+    showAlert(callback): void {
+        swal(this.usableOptions, callback);
         this.clearData();
     }
     
+    
     private clearData(): void {
         this.usableOptions = {};
-        this.callBack = () => {};
     }
 }
 

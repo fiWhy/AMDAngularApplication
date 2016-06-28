@@ -101,9 +101,9 @@ gulp.task('index-compile', ['copy-styles-scripts', 'ts-compile', 'copy-images'],
                         ext = splitted[(splitted.length-1)];
                 switch(ext) {
                     case 'css':
-                        return '<link rel="stylesheet" href="' + (config.prefix? '/' + config.prefix: '' ) + '/' + filepath + '">';
+                        return '<link rel="stylesheet" href="' + (config.prefix? '/' + config.prefix: '' ) + filepath + '">';
                     case 'js':
-                        return '<script src="' + (config.prefix? '/' + config.prefix: '' ) + '/' + filepath + '"></script>'
+                        return '<script src="' + (config.prefix? '/' + config.prefix: '' ) + filepath + '"></script>'
                 }
             }
         }))

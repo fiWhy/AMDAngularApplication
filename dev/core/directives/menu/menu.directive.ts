@@ -17,7 +17,7 @@ export class MenuDirective
     public templateUrl: string;
 
     constructor(config) {
-        this.templateUrl = config.documentRoot + '/core/directives/menu/templates/menu.template.html';
+        this.templateUrl = config.documentRoot + '/core/directives/menu/templates/menu.html';
     }
 }
 

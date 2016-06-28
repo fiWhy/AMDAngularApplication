@@ -5,3 +5,7 @@ md-card .md-actions, md-card md-card-actions {
 html, body {
     background-color: transparent !important;
 }
+
+.deed-icon {
+    cursor: pointer;
+}

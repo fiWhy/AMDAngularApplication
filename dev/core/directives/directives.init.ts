@@ -1,5 +1,6 @@
 import './formelement/formelement';
 import './menu/menu.directive';
+import './table/table.directive';
 import {TaskCardDirective} from './taskcard/taskcard.directive';
 import {SliderDirective} from './slider/slider.directive';
 import {DropdownDirective} from './dropdown/dropdown.directive';
@@ -8,7 +9,8 @@ import {SidebarDirective} from './sidebar/sidebar.directive';
 
 angular.module('app.core.directives', [
     'app.core.directives.formelement',
-    'app.core.directives.menu'
+    'app.core.directives.menu',
+    'app.core.directives.table'
 ])
     //# Task card
     .directive('taskCard', () => new TaskCardDirective)
