@@ -1,6 +1,6 @@
 export interface ISweetAlertService {
     setOptions(options: {}): SweetAlertService;
-    showAlert(callback): void;
+    showAlert(callback?): void;
 }
 
 export class SweetAlertService
@@ -28,7 +28,7 @@ export class SweetAlertService
         return this;
     }
 
-    showAlert(callback): void {
+    showAlert(callback?): void {
         swal(this.usableOptions, callback);
         this.clearData();
     }

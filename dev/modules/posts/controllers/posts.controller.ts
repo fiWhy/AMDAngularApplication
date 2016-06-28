@@ -27,6 +27,11 @@ export class PostsController extends ListController<IPost> {
             this.service.delete(this.list[index].id)
                 .then((res) => {
                     this.changePage(this.pagination.current_page, true);
+                    this.SweetAlertService.setOptions({
+                        title: 'Удалено!',
+                        text: 'Запись успешно удалена'
+                    });
+                    this.SweetAlertService.showAlert();
                 });
         });
     }
