@@ -9,3 +9,18 @@ html, body {
 .deed-icon {
     cursor: pointer;
 }
+
+.ta-root button {
+    color:#fff;
+    padding: 0px 10px;
+    margin: 2px;
+}
+
+.ta-root .btn-group {
+    display:inline-block;
+    float:left;
+}
+
+.ta-toolbar {
+    overflow:hidden;
+}

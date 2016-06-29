@@ -3,12 +3,13 @@ import {Post, IPost, IPostsList} from '../entities/posts.entity';
 import {ListController} from '../../../core/base/controller/list.controller';
 import {ISweetAlertService} from '../../../core/services/alert/alerts/sweet.alert.service';
 export class PostsController extends ListController<IPost> {
-    static $inject = ['PostsService', 'SweetAlertService', '$mdDialog'];
+    static $inject = ['PostsService', 'SweetAlertService', '$mdDialog', '$scope'];
     private editAble: IPost;
     constructor(
         private PostsService: IPostsService,
         private SweetAlertService: ISweetAlertService,
-        private $mdDialog
+        private $mdDialog,
+        private $scope
 
     ) {
         super();
@@ -38,7 +39,7 @@ export class PostsController extends ListController<IPost> {
 
     private addItem() {
         this.openDialog();
-        this.editAble = new Post({});
+        this.editAble = new Post();
     }
 
     private editItem(index: number) {
@@ -52,7 +53,9 @@ export class PostsController extends ListController<IPost> {
             templateUrl: './app/modules/posts/templates/edit.html',
             parent: angular.element(document.body),
             clickOutsideToClose: true,
-            fullscreen: true
+            fullscreen: true,
+            scope: this.$scope,
+            preserveScope: true
         });
     }
 

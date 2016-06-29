@@ -7,7 +7,8 @@ angular.module('app.core.config', [])
     .config(config)
     .config(httpConfig)
     .config(menuConfig)
-    .config(languageConfig);
+    .config(languageConfig)
+    .config(WYSIWYG);
 
 config.$inject = ['$locationProvider'];
 export function config($locationProvider, $mdThemingProvider) {
@@ -39,4 +40,18 @@ menuConfig.$inject = ['MenuDirectiveServiceProvider'];
 function menuConfig(MenuDirectiveServiceProvider) {
     MenuDirectiveServiceProvider.setMenuItem('Dashboard', 'view_headline', 'dashboard');
     MenuDirectiveServiceProvider.setMenuItem('Cars', 'view_headline', 'cars.index');
+}
+
+WYSIWYG.$inject = ['$provide'];
+function WYSIWYG($provide) {
+    $provide.decorator('taOptions', ['$delegate', function (taOptions) {
+        taOptions.toolbar = [
+            ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
+            ['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent'],
+            ['html', 'insertImage', 'insertLink', 'insertVideo']
+        ];
+
+        return taOptions;
+    }]);
 }

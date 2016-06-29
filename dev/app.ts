@@ -12,6 +12,7 @@ var app = angular.module('app', [
     'ngResource',
     'ui.router',
     'pascalprecht.translate',
+    'textAngular',
     
     'app.core',
     'app.modules',

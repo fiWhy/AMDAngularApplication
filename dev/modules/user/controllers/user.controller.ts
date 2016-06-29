@@ -34,14 +34,18 @@ export class UserController
     reset() {
         this.UserService.reset(this.resetData)
             .then((response) => {
-                    this.SweetAlertService.setOptions({
-                        closeOnConfirm: true
-                    }).showAlert('Success!', 'Your password has been sent to your email!');
+                this.SweetAlertService.setOptions({
+                    closeOnConfirm: true,
+                    title: 'Success!',
+                    text: 'Your password has been sent to your email!'
+                }).showAlert();
             }, (error) => {
-                    this.SweetAlertService.setOptions({
-                        closeOnConfirm: true,
-                        type: 'error'
-                    }).showAlert('Error!', error.data.error_message);
-            })
+                this.SweetAlertService.setOptions({
+                    closeOnConfirm: true,
+                    type: 'error',
+                    title: 'Error!',
+                    text: error.data.error_message
+                }).showAlert();
+            });
     }
 }

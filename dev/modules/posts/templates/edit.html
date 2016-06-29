@@ -1,51 +1,37 @@
 ﻿ <!-- Form with placeholder -->
-<md-dialog aria-label="Mango (Fruit)" ng-cloak style="width:100%;">
+<md-dialog aria-label="Mango (Fruit)"
+           ng-cloak
+           style="width:100%;">
     <form>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Mango (Fruit)</h2>
+                <h2 data-ng-bind="posts.editAble.fields.ru.title.value"></h2>
                 <span flex></span>
-                <md-button class="md-icon-button" ng-click="cancel()">
+                <!--<md-button class="md-icon-button">
                     <md-icon aria-label="Close dialog">clear</md-icon>
-                </md-button>
+                </md-button>-->
             </div>
         </md-toolbar>
         <md-dialog-content>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="John Doe" id="name2" type="text">
-                    <label for="first_name">Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="john@domainname.com" id="email2" type="email">
-                    <label for="email">Email</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="YourPassword" id="password2" type="password">
-                    <label for="password">Password</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <textarea placeholder="Oh WoW! Let me check this one too." id="message2" class="materialize-textarea"></textarea>
-                    <label for="message">Message</label>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
-                            Submit
-                            <i class="mdi-content-send right"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab data-ng-repeat="(key, language) in posts.editAble.fields" label="{{ key }}">
+                    <md-content class="md-padding">
+                        <div class="row">
+                            <md-input-container class="col m6">
+                                <label>Заголовок</label>
+                                <input data-ng-model="language.title.value">
+                            </md-input-container>
+                            <md-input-container class="col m12">
+                                <label>Текст</label>
+                                <text-angular data-ng-model="language.content.value"></text-angular>
+                            </md-input-container>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
         </md-dialog-content>
         <md-dialog-actions layout="row">
-           
+
         </md-dialog-actions>
     </form>
-    </md-dialog>
+</md-dialog>

@@ -18,6 +18,7 @@
     <!-- For Windows Phone -->
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./dev/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAZnaZBXLqNBRXjd-82km_NO7GUItyKek"></script>
 
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
@@ -32,6 +33,7 @@
     <link rel="stylesheet" href="/admin/dev/lib/Materialize/bin/materialize.css">
     <link rel="stylesheet" href="/admin/dev/lib/angular-material/angular-material.css">
     <link rel="stylesheet" href="/admin/dev/lib/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="/admin/dev/lib/textAngular/dist/textAngular.css">
     <!-- endbower -->
 
     <!-- inject:css -->
@@ -66,7 +68,6 @@
         </div>
     </div>
 
-
     <div data-ng-if="app.isAuthorized" data-ng-include="'./app/view/layout/footer.html'"></div>
 
 
@@ -91,10 +92,21 @@
     <script src="/admin/dev/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <script src="/admin/dev/lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
     <script src="/admin/dev/lib/underscore/underscore.js"></script>
+    <script src="/admin/dev/lib/rangy/rangy-core.js"></script>
+    <script src="/admin/dev/lib/rangy/rangy-classapplier.js"></script>
+    <script src="/admin/dev/lib/rangy/rangy-highlighter.js"></script>
+    <script src="/admin/dev/lib/rangy/rangy-selectionsaverestore.js"></script>
+    <script src="/admin/dev/lib/rangy/rangy-serializer.js"></script>
+    <script src="/admin/dev/lib/rangy/rangy-textrange.js"></script>
+    <script src="/admin/dev/lib/textAngular/dist/textAngular.js"></script>
+    <script src="/admin/dev/lib/textAngular/dist/textAngular-sanitize.js"></script>
+    <script src="/admin/dev/lib/textAngular/dist/textAngularSetup.js"></script>
+    <script src="/admin/dev/lib/jquery-colorbox/jquery.colorbox.js"></script>
     <!-- endbower -->
 
     <!-- inject:js -->
     <script src="/admin/app/scripts/js/plugins.js"></script>
+    <script src="/admin/app/scripts/js/standalonepopup.min.js"></script>
     <script src="/admin/app/scripts/scripts.js"></script>
     <!-- endinject -->
 
