@@ -1,6 +1,6 @@
 /node_modules
 /typings
-/dev/lib
+/src/lib
 npm-debug.log
 debug.log
 /api
