@@ -24,7 +24,7 @@ export interface IAuthorizeService {
 
 class AuthorizeService
     implements IAuthorizeService {
-    static $inject: string[] = ['AuthorizeResource', '$cookies', 'config', 'ToastAlertService', '$q'];
+    static $inject: string[] = ['AuthorizeResource', '$cookies', 'config', 'SweetAlertService', '$q'];
 
     constructor(private AuthorizeResource,
         private $cookies: ng.cookies.ICookiesService,

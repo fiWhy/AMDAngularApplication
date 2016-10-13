@@ -5,16 +5,17 @@
 
 module.exports = {
     entry: {
-        app: config.src + '/app.tsx',
-        vendor: config.src + '/vendor.tsx'
+        app: config.src + '/app.ts',
+        vendor: config.src + '/vendor.ts'
     },
     resolve: {
-        extensions: ['', '.tsx', '.js', '.json', '.scss']
+        extensions: ['', '.ts', '.js', '.json', '.scss']
     },
     module: {
-         loaders: [
+        loaders: [
             { test: /\.ts$/, loader: 'ts-loader' },
-            { test: /\.html$/, loader: 'html-loader' }, 
+            { test: /\.html$/, loader: 'html-loader' },
+            { loader: 'exports?window.angular', test: require.resolve('angular') },
             {
                 test: /\.css$/,
                 loader: 'style!css?sourceMap'
@@ -47,8 +48,13 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
-        })
+            template: 'src/view/layout/index.html'
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            angular: "angular"
+        }),
     ]
 
 };

@@ -9,11 +9,10 @@ interface IUserController {
 
 export class UserController
     implements IUserController {
-    static $inject = ['UserService', 'ToastAlertService', 'SweetAlertService', '$state'];
+    static $inject = ['UserService', 'SweetAlertService', '$state'];
     loginData: {};
     resetData: {};
     constructor(private UserService: IUserServiceImplementation,
-        private ToastAlertService: IToastAlertService,
         private SweetAlertService: ISweetAlertService,
         private $state: ng.ui.IStateService) {
     }

@@ -3,9 +3,10 @@ import 'angular-cookies';
 import 'angular-animate';
 import 'angular-resource';
 import 'angular-ui-router';
-import 'angular-sanitize';
 import 'angular-translate';
 import 'angular-translate-loader-static-files';
+import 'textangular';
+import 'textangular/dist/textAngular-sanitize.min.js';
 
 import './core/core.init';
 import './modules/modules.init';
@@ -17,6 +18,7 @@ var app = angular.module('app', [
     'ngSanitize',
     'ngAnimate',
     'ngResource',
+    'textAngular',
     'ui.router',
     'pascalprecht.translate',
     
