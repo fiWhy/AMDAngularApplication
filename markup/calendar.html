@@ -6,8 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="css/uniform.css" />
-<link rel="stylesheet" href="css/select2.css" />
+<link rel="stylesheet" href="css/fullcalendar.css" />
 <link rel="stylesheet" href="css/matrix-style.css" />
 <link rel="stylesheet" href="css/matrix-media.css" />
 <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -58,14 +57,14 @@
 
 <!--sidebar-menu-->
 
-<div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-file"></i>Addons</a>
   <ul>
     <li><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-    <li><a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a> </li>
-    <li><a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a> </li>
+    <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a> </li>
+    <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a> </li>
     <li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>
     <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a></li>
-    <li class="submenu active"> <a href="#"><i class="icon icon-list"></i> <span>Forms</span> <span class="label label-important">3</span></a>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span class="label label-important">3</span></a>
       <ul>
         <li><a href="form-common.html">Basic Form</a></li>
         <li><a href="form-validation.html">Form with Validation</a></li>
@@ -74,7 +73,7 @@
     </li>
     <li><a href="buttons.html"><i class="icon icon-tint"></i> <span>Buttons &amp; icons</span></a></li>
     <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>Eelements</span></a></li>
-    <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Addons</span> <span class="label label-important">5</span></a>
+    <li class="submenu active"> <a href="#"><i class="icon icon-file"></i> <span>Addons</span> <span class="label label-important">4</span></a>
       <ul>
         <li><a href="index2.html">Dashboard2</a></li>
         <li><a href="gallery.html">Gallery</a></li>
@@ -109,107 +108,47 @@
 </div>
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Form elements</a> <a href="#" class="current">Validation</a> </div>
-    <h1>Form validation</h1>
+    <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Sample pages</a> <a href="#" class="current">Calendar</a></div>
+    <h1>Calendar</h1>
   </div>
-  <div class="container-fluid"><hr>
+  <div class="container-fluid">
+    <hr>
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Form validation</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="#" name="basic_validate" id="basic_validate" novalidate="novalidate">
-              <div class="control-group">
-                <label class="control-label">Your Name</label>
-                <div class="controls">
-                  <input type="text" name="required" id="required">
+        <div class="widget-box widget-calendar">
+          <div class="widget-title"> <span class="icon"><i class="icon-calendar"></i></span>
+            <h5>Calendar</h5>
+            <div class="buttons"> <a id="add-event" data-toggle="modal" href="#modal-add-event" class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i> Add new event</a>
+              <div class="modal hide" id="modal-add-event">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">×</button>
+                  <h3>Add a new event</h3>
                 </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">Your Email</label>
-                <div class="controls">
-                  <input type="text" name="email" id="email">
+                <div class="modal-body">
+                  <p>Enter event name:</p>
+                  <p>
+                    <input id="event-name" type="text" />
+                  </p>
                 </div>
+                <div class="modal-footer"> <a href="#" class="btn" data-dismiss="modal">Cancel</a> <a href="#" id="add-event-submit" class="btn btn-primary">Add event</a> </div>
               </div>
-              <div class="control-group">
-                <label class="control-label">Date (only Number)</label>
-                <div class="controls">
-                  <input type="text" name="date" id="date">
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">URL (Start with http://)</label>
-                <div class="controls">
-                  <input type="text" name="url" id="url">
-                </div>
-              </div>
-              <div class="form-actions">
-                <input type="submit" value="Validate" class="btn btn-success">
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Numeric validation</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="#" name="number_validate" id="number_validate" novalidate="novalidate">
-              <div class="control-group">
-                <label class="control-label">Minimal Salary</label>
-                <div class="controls">
-                  <input type="text" name="min" id="min" />
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">Maximum Salary</label>
-                <div class="controls">
-                  <input type="text" name="max" id="max" />
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">Only digit</label>
-                <div class="controls">
-                  <input type="text" name="number" id="number" />
-                </div>
-              </div>
-              <div class="form-actions">
-                <input type="submit" value="Validate" class="btn btn-success">
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="row-fluid">
-        <div class="span12">
-          <div class="widget-box">
-            <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-              <h5>Security validation</h5>
             </div>
-            <div class="widget-content nopadding">
-              <form class="form-horizontal" method="post" action="#" name="password_validate" id="password_validate" novalidate="novalidate">
-                <div class="control-group">
-                  <label class="control-label">Password</label>
-                  <div class="controls">
-                    <input type="password" name="pwd" id="pwd" />
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">Confirm password</label>
-                  <div class="controls">
-                    <input type="password" name="pwd2" id="pwd2" />
-                  </div>
-                </div>
-                <div class="form-actions">
-                  <input type="submit" value="Validate" class="btn btn-success">
-                </div>
-              </form>
+          </div>
+          <div class="widget-content">
+            <div class="panel-left">
+              <div id="fullcalendar"></div>
+            </div>
+            <div id="external-events" class="panel-right">
+              <div class="panel-title">
+                <h5>Drag Events to the calander</h5>
+              </div>
+              <div class="panel-content">
+                <div class="external-event ui-draggable label label-inverse">My Event 1</div>
+                <div class="external-event ui-draggable label label-inverse">My Event 2</div>
+                <div class="external-event ui-draggable label label-inverse">My Event 3</div>
+                <div class="external-event ui-draggable label label-inverse">My Event 4</div>
+                <div class="external-event ui-draggable label label-inverse">My Event 5</div>
+              </div>
             </div>
           </div>
         </div>
@@ -225,10 +164,8 @@
 <script src="js/jquery.min.js"></script> 
 <script src="js/jquery.ui.custom.js"></script> 
 <script src="js/bootstrap.min.js"></script> 
-<script src="js/jquery.uniform.js"></script> 
-<script src="js/select2.min.js"></script> 
-<script src="js/jquery.validate.js"></script> 
+<script src="js/fullcalendar.min.js"></script> 
 <script src="js/matrix.js"></script> 
-<script src="js/matrix.form_validation.js"></script>
+<script src="js/matrix.calendar.js"></script>
 </body>
 </html>
