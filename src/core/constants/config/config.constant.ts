@@ -2,8 +2,8 @@ export function ConfigConstant() {
     var apiUrl = '/api/';
     return {
         apiUrl: apiUrl,
-        documentRoot: 'app',
-        modulesRoot: 'app/modules',
+        documentRoot: '/src/',
+        modulesRoot: '/src/modules/',
         mainPaths: {
             //menu: apiUrl + 'menu/:name',
             authorize: apiUrl + 'login',

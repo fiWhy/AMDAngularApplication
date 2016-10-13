@@ -1,9 +1,9 @@
-dashboardConfig.$inject = ['$stateProvider'];
-export function dashboardConfig($stateProvider) {
+dashboardConfig.$inject = ['$stateProvider', 'config'];
+export function dashboardConfig($stateProvider, config) {
     $stateProvider
         .state('dashboard', {
             url: "/dashboard",
             controller: 'DashboardController as dashboard',
-            templateUrl: "./app/modules/dashboard/templates/index.html"
+            templateUrl: `${config.documentRoot}modules/dashboard/templates/index.html`
         })
 }

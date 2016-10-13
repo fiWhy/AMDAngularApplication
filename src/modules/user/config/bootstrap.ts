@@ -13,11 +13,11 @@ export function userConfig($stateProvider, $translateProvider, config, MenuDirec
         .state('user.login', {
             url: "/login",
             controller: 'UserController as user',
-            templateUrl: "./app/modules/user/templates/login.html"
+            templateUrl: `${config.documentRoot}modules/user/templates/login.html`
         }).state('user.reset', {
             url: "/reset",
             controller: 'UserController as user',
-            templateUrl: "./app/modules/user/templates/forgot.html"
+            templateUrl: `${config.documentRoot}modules/user/templates/forgot.html`
         });
         
 
