@@ -7,3 +7,6 @@ debug.log
 /app
 admin.sln
 .vs
+
+config/*
+!config/*.default
