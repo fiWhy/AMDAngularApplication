@@ -23,13 +23,13 @@
 	<base href="/src/" />
 </head>
 
-<body data-ng-class="{'nav-md': !app.isAuthorized, 'login': app.isAuthorized}" data-ng-controller="AppController as app">
+<body data-ng-class="{'nav-md': app.isAuthorized, 'login': !app.isAuthorized}" data-ng-controller="AppController as app">
 	<alert></alert>
 
 		<!-- content starts here -->
-		<ui-view data-ng-if="app.isAuthorized"></ui-view>
+		<ui-view data-ng-if="!app.isAuthorized"></ui-view>
 		<!-- content ends here -->
-		<data-ng-include data-ng-if="!app.isAuthorized" src="'view/layout/content.html'">
+		<data-ng-include data-ng-if="app.isAuthorized" src="'view/layout/content.html'">
 </body>
 
 </html>
