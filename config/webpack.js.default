@@ -12,9 +12,28 @@ module.exports = {
         extensions: ['', '.tsx', '.js', '.json', '.scss']
     },
     module: {
-        loaders: [
-            { test: /\.(ts|tsx)$/, loader: 'ts-loader' },
-            { test: /\.html$/, loader: 'html-loader' },
+         loaders: [
+            { test: /\.ts$/, loader: 'ts-loader' },
+            { test: /\.html$/, loader: 'html-loader' }, 
+            {
+                test: /\.css$/,
+                loader: 'style!css?sourceMap'
+            }, {
+                test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=application/font-woff"
+            }, {
+                test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=application/font-woff"
+            }, {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=application/octet-stream"
+            }, {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "file"
+            }, {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=image/svg+xml"
+            },
             { test: /\.scss$/, loader: ExtractTextPlugin.extract('css!sass') },
             { test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file?name=assets/[name].[hash].[ext]' },
         ]

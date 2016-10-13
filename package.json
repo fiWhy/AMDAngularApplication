@@ -45,9 +45,11 @@
     "karma-systemjs": "^0.13.0",
     "node-sass": "^3.10.1",
     "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
     "ts-loader": "^0.9.1",
     "tslint": "^3.6.0",
     "typescript": "^1.8.9",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^0.14.1"

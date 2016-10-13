@@ -6,11 +6,4 @@ import './posts/posts.init';
 
 import {modules} from './modules.list.config'
 
-angular.module('app.modules', [
-    'ngCookies',
-    'ngMaterial',
-    'ngAnimate',
-    'ngResource',
-    'ui.router',
-    'pascalprecht.translate'
-].concat(modules()));
+angular.module('app.modules', [].concat(modules()));
