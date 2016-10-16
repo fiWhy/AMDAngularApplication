@@ -15,6 +15,8 @@ export class UserController
     constructor(private UserService: IUserServiceImplementation,
         private SweetAlertService: ISweetAlertService,
         private $state: ng.ui.IStateService) {
+        
+        console.log('User Controller');
     }
 
     login() {

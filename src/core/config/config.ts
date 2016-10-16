@@ -11,10 +11,7 @@ angular.module('app.core.config', [])
     .config(WYSIWYG);
 
 config.$inject = ['$locationProvider'];
-export function config($locationProvider, $mdThemingProvider) {
-    //$mdThemingProvider.theme('default')
-    //    .primaryPalette('red')
-    //    .accentPalette('red');
+export function config($locationProvider) {
     //$locationProvider.html5Mode({
     //    enabled: false,
     //    requireBase: false
@@ -38,8 +35,7 @@ function languageConfig($translateProvider) {
 
 menuConfig.$inject = ['MenuDirectiveServiceProvider'];
 function menuConfig(MenuDirectiveServiceProvider) {
-    MenuDirectiveServiceProvider.setMenuItem('Dashboard', 'view_headline', 'dashboard');
-    MenuDirectiveServiceProvider.setMenuItem('Cars', 'view_headline', 'cars.index');
+    // MenuDirectiveServiceProvider.setMenuItem('Dashboard', 'view_headline', 'dashboard');
 }
 
 WYSIWYG.$inject = ['$provide'];

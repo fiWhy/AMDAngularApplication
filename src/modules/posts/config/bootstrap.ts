@@ -9,6 +9,6 @@ export function postsBootstrap(MenuDirectiveServiceProvider: IMenuDirectiveServi
                 url: "/posts",
                 controller: 'PostsController',
                 controllerAs: 'posts',
-                templateUrl: "./app/modules/posts/templates/index.html"
+                templateUrl: "modules/posts/templates/index.html"
             })
 }

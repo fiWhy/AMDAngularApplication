@@ -15,6 +15,7 @@ export class AppController
         private $location: ng.ILocationService,
         private AuthorizeService: IAuthorizeService) {
         var self = this;
+        console.log('App Controller');
         
         $rootScope.$on('$stateChangeStart', function (event, toState) {
             var authLocation = /user\.(login|reset)/.test(toState.name);

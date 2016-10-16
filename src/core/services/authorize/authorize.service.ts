@@ -49,7 +49,6 @@ class AuthorizeService
 
     isLoggedIn(): boolean {
         var token = this.localStorageService.get('token');
-        console.log(token);
         return token !== undefined;
     }
 

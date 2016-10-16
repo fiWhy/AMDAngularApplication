@@ -6,5 +6,5 @@ import {DashboardController} from './controllers/dashboard.controller';
 angular.module('app.modules.dashboard', [])
     .service('DashboardServiceImplementation', DashboardServiceImplementation)
     .provider('DashboardService', DashboardServiceProvider)
-    .controller('DashboardController', DashboardController)
+    // .controller('DashboardController', DashboardController)
     .config(dashboardConfig);

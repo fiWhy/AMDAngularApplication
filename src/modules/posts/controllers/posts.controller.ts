@@ -13,6 +13,7 @@ export class PostsController extends ListController<IPost> {
 
     ) {
         super();
+        console.log('Posts');
         this.service = PostsService;
         this.load(true);
     }
