@@ -10,3 +10,4 @@ require('./styles/mystyle.scss');
 
 import './scripts/helpers/smartresize.js';
 import './scripts/custom';
+import 'sweetalert';

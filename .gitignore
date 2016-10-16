@@ -10,3 +10,4 @@ admin.sln
 
 config/*
 !config/*.default
+src/core/constants/config/config.constant.ts

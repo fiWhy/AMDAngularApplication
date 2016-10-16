@@ -7,12 +7,15 @@ import 'angular-translate';
 import 'angular-translate-loader-static-files';
 import 'textangular';
 import 'textangular/dist/textAngular-sanitize.min.js';
+import 'angular-ui-bootstrap';
+import 'angular-local-storage';
 
 import './core/core.init';
 import './modules/modules.init';
 import './scripts/scripts';
 
 var app = angular.module('app', [
+    'ui.bootstrap',
     'infinite-scroll',
     'ngCookies',
     'ngSanitize',
@@ -21,6 +24,7 @@ var app = angular.module('app', [
     'textAngular',
     'ui.router',
     'pascalprecht.translate',
+    'LocalStorageModule',
     
     'app.core',
     'app.modules',

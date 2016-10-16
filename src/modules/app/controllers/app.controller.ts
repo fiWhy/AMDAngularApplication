@@ -9,7 +9,6 @@ export interface IAppController {
 export class AppController
     implements IAppController {
     static $inject = ['$rootScope', 'AppService', '$state', '$location', 'AuthorizeService'];
-    isAuthorized: boolean;
     constructor(private $rootScope: ng.IRootScopeService,
         private AppService: IAppServiceImplementation,
         private $state: ng.ui.IStateService,
@@ -18,7 +17,6 @@ export class AppController
         var self = this;
         
         $rootScope.$on('$stateChangeStart', function (event, toState) {
-            self.isAuthorized = AppService.checkForAuth();
             var authLocation = /user\.(login|reset)/.test(toState.name);
             if (self.isAuthorized) {
                 if (authLocation)
@@ -29,6 +27,10 @@ export class AppController
                 }
             }
         });
+    }
+
+    get isAuthorized(): boolean {
+        return this.AppService.checkForAuth()
     }
 
     public getUser(): string {

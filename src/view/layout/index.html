@@ -24,8 +24,7 @@
 </head>
 
 <body data-ng-class="{'nav-md': app.isAuthorized, 'login': !app.isAuthorized}" data-ng-controller="AppController as app">
-	<alert></alert>
-
+	<!--<alert alerts="app.alerts"></alert>-->
 		<!-- content starts here -->
 		<ui-view data-ng-if="!app.isAuthorized"></ui-view>
 		<!-- content ends here -->

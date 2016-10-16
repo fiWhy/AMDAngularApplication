@@ -3,7 +3,7 @@ import {AuthorizeResource} from './resources/authorize.resource';
 import {IAuthorizeEntity} from './entity/authorize.entity';
 import {IUserEntity} from '../../entity/user.entity';
 import {ITokenEntity} from './entity/token.entity';
-import {IToastAlertService} from '../alert/alerts/toast.alert.service';
+import {ISweetAlertService} from '../alert/alerts/sweet.alert.service';
 import {ISingleResponse} from "../../entity/r.entity";
 
 /**
@@ -24,54 +24,58 @@ export interface IAuthorizeService {
 
 class AuthorizeService
     implements IAuthorizeService {
-    static $inject: string[] = ['AuthorizeResource', '$cookies', 'config', 'SweetAlertService', '$q'];
+    static $inject: string[] = ['AuthorizeResource', 'localStorageService', 'config', 'SweetAlertService', '$q'];
 
     constructor(private AuthorizeResource,
-        private $cookies: ng.cookies.ICookiesService,
+        private localStorageService: ng.local.storage.ILocalStorageService,
         private config,
-        private ToastAlertService: IToastAlertService,
+        private SweetAlertService: ISweetAlertService,
         private $q: ng.IQService) {
 
     }
 
-    private authorize(name: string, token: string): void {
-        this.$cookies.put('token', token);
-        this.$cookies.put('user', name);
+    private authorize(user: string, token: string): void {
+        this.localStorageService.set('token', token);
+        this.localStorageService.set('user', user);
     }
 
     checkIsTokenExpired(): boolean {
         var currentDate = new Date(),
-            expireTime = this.$cookies.get('token');
+            expireTime = this.localStorageService.get('token');
         // return (currentDate.getTime()/1000) >= expireTime;
         if(!expireTime) return true;
         return false;
     }
 
     isLoggedIn(): boolean {
-        var token = this.$cookies.get('token');
+        var token = this.localStorageService.get('token');
+        console.log(token);
         return token !== undefined;
     }
 
-    getCurrentUser(): string {
-        var user = this.$cookies.get('user');
+    getCurrentUser(): any {
+        var user = this.localStorageService.get('user');
         return user;
     }
 
     logout(): void {
-        this.$cookies.remove('token');
-        this.$cookies.remove('user');
+        this.localStorageService.remove('token');
+        this.localStorageService.remove('user');
     }
 
     login(data): ng.IPromise<ISingleResponse<IAuthorizeEntity>> {
         var user = this.AuthorizeResource.login(data).$promise;
         user.then((response) => {
-            if (response.data.name && response.data.token !== null) {
-                this.authorize(response.data.name, response.data.token);
+            if (response.data.user && response.data.token !== null) {
+                this.authorize(response.data.user, response.data.token);
             } else {
                 return this.$q.reject();
             }
         }, (error) => {
-           this.ToastAlertService.showSimpleAlert(error.data.message);
+           this.SweetAlertService.setOptions({
+               type: 'error',
+               text: 'Wrong login or password'
+           }).showAlert();
         });
         return user;
     }
